@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="48" viewBox="0 0 200 48" role="img" aria-label="Mythri Infra">
+  <rect width="200" height="48" rx="4" fill="#1F2328"/>
+  <rect x="8" y="8" width="8" height="32" fill="#E8A100"/>
+  <text x="28" y="31" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Mythri Infra</text>
+</svg>

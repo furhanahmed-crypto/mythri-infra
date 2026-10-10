@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" role="img" aria-label="Mythri Infra project hierarchy">
+  <rect width="720" height="320" fill="#F7F8F9"/>
+  <rect x="250" y="24" width="220" height="56" rx="4" fill="#1F2328"/>
+  <text x="360" y="58" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16" font-weight="700">Managing Partner (HO)</text>
+  <line x1="360" y1="80" x2="360" y2="120" stroke="#E5E7EB" stroke-width="2"/>
+  <line x1="180" y1="120" x2="540" y2="120" stroke="#E5E7EB" stroke-width="2"/>
+  <line x1="180" y1="120" x2="180" y2="140" stroke="#E5E7EB" stroke-width="2"/>
+  <line x1="540" y1="120" x2="540" y2="140" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="80" y="140" width="200" height="56" rx="4" fill="#E8A100"/>
+  <text x="180" y="174" text-anchor="middle" fill="#1F2328" font-family="Arial, sans-serif" font-size="15" font-weight="700">Project Manager</text>
+  <rect x="440" y="140" width="200" height="56" rx="4" fill="#E8A100"/>
+  <text x="540" y="174" text-anchor="middle" fill="#1F2328" font-family="Arial, sans-serif" font-size="15" font-weight="700">Project Accountant</text>
+  <line x1="180" y1="196" x2="180" y2="230" stroke="#E5E7EB" stroke-width="2"/>
+  <line x1="540" y1="196" x2="540" y2="230" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="60" y="230" width="240" height="56" rx="4" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="180" y="264" text-anchor="middle" fill="#1F2328" font-family="Arial, sans-serif" font-size="14">Construction team &amp; workmen</text>
+  <rect x="420" y="230" width="240" height="56" rx="4" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="540" y="264" text-anchor="middle" fill="#1F2328" font-family="Arial, sans-serif" font-size="14">Accounts, stores &amp; admin</text>
+</svg>

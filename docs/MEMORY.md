@@ -36,8 +36,11 @@ Long-lived context for agents and humans. Update when decisions change.
 
 ## Design decisions locked (unless client overrides)
 
-- White background, charcoal `#1F2328`, accent construction yellow `#E8A100`
-- Single sans family (Inter / Manrope / Poppins — pick one)
+- Light theme (default): white background, charcoal `#1F2328`, accent construction yellow `#E8A100`
+- Dark theme (added in v2 redesign at agency request): deep charcoal surfaces, same yellow accent; Light ↔ Dark click toggle (no System)
+- Type pairing (v3, agency request): **Bricolage Grotesque** headings + **Manrope** body
+- Gradients use `primary` → `primary-deep` (burnt amber) only; gradient text limited to one highlighted phrase per heading
+- UI built on shadcn/ui; motion via framer-motion with one shared "fluid" spring
 - Real photos only; no stock skyscrapers
 - Mobile first; sticky header; floating WhatsApp on mobile
 - Footer uses `<p>` / `<address>`, never heading tags
@@ -59,12 +62,13 @@ Long-lived context for agents and humans. Update when decisions change.
 | 2020 NR Constructions / KPC Projects | Omitted until scope shared |
 | Pre-2016 project list | Label as **team experience**, not Mythri Infra firm projects |
 | Partner bios/photos | Placeholder until client delivers |
-| Logo + site photos | Pending asset drop |
+| Logo + site photos | Temp free stock fills in `public/images/` (not ImagesBazaar); client photos still required |
+| Partner photos | Dummy AI portraits in place for layout; replace with client photos before go-live |
 
 ## Technical decisions
 
 - Stack: Next.js 16 App Router + TypeScript + Tailwind v4 (see ARCHITECTURE.md)
-- Font choice locked: **Manrope** (one family sitewide)
+- Fonts: Bricolage Grotesque (`--font-display` → `font-heading`) + Manrope (`--font-sans`)
 - No database / no CMS in v1
 - Form → Resend email when `RESEND_API_KEY` set; otherwise logs in non-production
 - Spam: honeypot always on; reCAPTCHA v3 when secret present
@@ -72,6 +76,11 @@ Long-lived context for agents and humans. Update when decisions change.
 - Missing photos use `MediaPlaceholder` (filename + alt), not stock imagery
 - Trusted By row uses **text names** until logo permission arrives
 - Footer copyright year fixed to **2026** (handover); avoid `new Date()` under Cache Components prerender
+- shadcn initialised with Radix base + Nova preset (`components.json`); the preset's Geist font was removed in favour of Manrope
+- shadcn colour variables replaced with brand OKLCH values for `:root` and `.dark`; extra tokens: `surface`, `inverse`, `inverse-foreground`, `whatsapp`
+- Added a local `xl` button size (h-11) for 44px tap targets; shadcn defaults are compact
+- Interim theme-aware `Logo` component in the header/footer until the client logo arrives
+- Team structure diagram rendered as HTML (theme-aware) instead of the static SVG; `public/images/team-structure.svg` kept as a fallback asset
 
 ## Lessons / pitfalls to avoid
 
@@ -83,6 +92,13 @@ Long-lived context for agents and humans. Update when decisions change.
 6. **Do not autoplay video** or ship uncompressed heroes — LCP budget is strict.
 7. **Do not expose form inboxes or API keys** in client bundles.
 8. **Keep PDF NOTE lines out of production copy.**
+9. **Case-insensitive filesystem:** our old `components/ui/Button.tsx` collided with shadcn's `button.tsx`. Custom primitives now live in `components/site/`.
+10. **`cn` is a real package** (`cn` from shadcn). `src/lib/utils.ts` must stay `export { cn } from "cn"`; a blanket replace once turned it into a circular self-import.
+11. **Hero text must not depend on hydration** — use CSS entrance animations above the fold; Framer only for in-view reveals.
+12. **Hydration warnings mentioning `data-cursor-ref`** come from the Cursor browser automation tool, not the app.
+13. **Turbopack can serve a stale `globals.css`** after rapid successive edits (new utilities silently missing). Fix: stop the dev server, `rm -rf .next`, restart.
+14. **Dark bands in light mode:** add the `dark` class to a section — the `.dark` token block re-scopes every shadcn variable inside it.
+15. **`scroll-behavior: smooth` on `<html>` breaks App Router scroll-to-top** unless you also set `data-scroll-behavior="smooth"` on `<html>`. Without the data attr, Next cannot temporarily force `auto` during navigations; `scrollTop = 0` animates, then `scrollIntoView()` on the page segment wins and lands ~header-height (~72px) below the top. See https://nextjs.org/docs/messages/missing-data-scroll-behavior
 
 ## Changelog of decisions
 
@@ -91,3 +107,10 @@ Long-lived context for agents and humans. Update when decisions change.
 | 2026-10-10 | Docs scaffold created from Digi Carotene SEO handover PDF |
 | 2026-10-10 | Default visual system: charcoal + construction yellow pending brand confirmation |
 | 2026-10-10 | Implemented full 6-page Next.js site + contact API; Manrope + placeholders until client assets |
+| 2026-10-10 | v2 redesign: shadcn/ui, light + dark themes (next-themes), framer-motion fluid animations; DESIGN.md rewritten |
+| 2026-10-10 | Filled placeholders with Wikimedia Commons earthwork photos (incl. Andhra Pradesh excavator). ImagesBazaar skipped (paid licence). Partner portraits stay empty. |
+| 2026-10-10 | v3 visual upgrade (agency request): ONGC project photo as home hero; Bricolage Grotesque headings; burnt-amber gradient shade; aurora/cursor-glow/spotlight/tilt/magnetic/marquee effects; dark "Why" band and stats panel; back-to-top + scroll progress |
+| 2026-10-10 | Featured projects → Embla carousel (loop, 3s autoplay, arrows + dots). Footer uses forced `dark` + deep black to match Why band. What We Do icons use primary fill by default. |
+| 2026-10-10 | SpotlightCard: centred amber wash as default (`isolate` so -z wash stays above card fill); hover is lift/border/glow only — no cursor chase. Featured carousel: Next/Prev loop; slide py padding so hover shadow isn’t clipped by Embla overflow. |
+| 2026-10-10 | Diversified duplicate Commons slots (sand, drainage, roller, dumper, drill, blade, mining, roads). Still temporary until licensed Mythri/ImagesBazaar set. |
+| 2026-10-10 | All page image slots filled (services/projects/capabilities/about heroes + fleet). Partner cards use temporary AI dummy portraits until client photos. |

@@ -1,11 +1,15 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { projectsContent } from "@/content/projects";
 import { buildPageMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, projectItemListSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Section } from "@/components/ui/Section";
+import { PageHeader } from "@/components/site/PageHeader";
+import { Section } from "@/components/site/Section";
+import { SectionHeading } from "@/components/site/SectionHeading";
 import { ProjectFilters } from "@/components/projects/ProjectFilters";
-import { ButtonLink } from "@/components/ui/Button";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Button } from "@/components/ui/button";
 
 export const metadata = buildPageMetadata({
   ...projectsContent.seo,
@@ -13,18 +17,14 @@ export const metadata = buildPageMetadata({
 });
 
 export default function ProjectsPage() {
-  const { header, filters, featured, firmProjects, teamExperience, cta } =
-    projectsContent;
+  const { header, filters, featured, firmProjects, teamExperience, cta } = projectsContent;
 
   return (
     <>
       <JsonLd
         data={[
           projectItemListSchema(
-            featured.items.map((item) => ({
-              name: item.h3,
-              description: item.p,
-            })),
+            featured.items.map((item) => ({ name: item.h3, description: item.p })),
           ),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -33,7 +33,7 @@ export default function ProjectsPage() {
         ]}
       />
 
-      <PageHeader h1={header.h1} intro={header.intro} image={header.image} />
+      <PageHeader crumb="Projects" h1={header.h1} intro={header.intro} image={header.image} />
 
       <Section>
         <ProjectFilters
@@ -45,35 +45,60 @@ export default function ProjectsPage() {
         />
       </Section>
 
+      {/* Pre-2016 works are team experience, not firm projects */}
       <Section surface>
-        <h2>{teamExperience.h2}</h2>
-        <p className="mt-3 max-w-3xl text-text-muted">{teamExperience.intro}</p>
-        <div className="mt-6 overflow-x-auto rounded-[5px] border border-border">
-          <table className="min-w-full text-left text-sm">
-            <thead className="bg-bg text-text">
-              <tr>
-                <th className="px-4 py-3 font-semibold">Year</th>
-                <th className="px-4 py-3 font-semibold">Project</th>
-                <th className="px-4 py-3 font-semibold">Location</th>
-                <th className="px-4 py-3 font-semibold">Client / Main contractor</th>
-              </tr>
-            </thead>
-            <tbody>
-              {teamExperience.rows.map((row) => (
-                <tr key={`${row.year}-${row.project}`} className="border-t border-border">
-                  <td className="whitespace-nowrap px-4 py-3 align-top font-medium">
-                    {row.year}
-                  </td>
-                  <td className="px-4 py-3 align-top">{row.project}</td>
-                  <td className="px-4 py-3 align-top">{row.location}</td>
-                  <td className="px-4 py-3 align-top">{row.client}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="mt-10">
-          <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <SectionHeading
+                eyebrow="Team experience"
+                title={teamExperience.h2}
+                description={teamExperience.intro}
+              />
+              <Reveal delay={0.15} className="mt-8">
+                <Button asChild size="xl" className="group">
+                  <Link href={cta.href}>
+                    {cta.label}
+                    <ArrowRight
+                      data-icon="inline-end"
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </Link>
+                </Button>
+              </Reveal>
+            </div>
+          </div>
+
+          <div className="relative lg:col-span-8">
+            <span
+              className="absolute top-2 bottom-2 left-[5.25rem] w-px bg-border sm:left-[6.25rem]"
+              aria-hidden="true"
+            />
+          <Stagger as="ol" stagger={0.06}>
+            {teamExperience.rows.map((row) => (
+              <StaggerItem
+                as="li"
+                key={`${row.year}-${row.project}`}
+                className="relative grid grid-cols-[4.5rem_1fr] gap-6 py-4 sm:grid-cols-[5.5rem_1fr]"
+              >
+                <span className="pt-0.5 text-right font-mono text-sm font-semibold text-muted-foreground">
+                  {row.year}
+                </span>
+                <span
+                  className="absolute top-[1.4rem] left-[5.25rem] size-2.5 -translate-x-1/2 rounded-full border-2 border-surface bg-primary sm:left-[6.25rem]"
+                  aria-hidden="true"
+                />
+                <div className="pl-2">
+                  <p className="font-semibold text-foreground">{row.project}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {row.location} · {row.client}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+          </div>
         </div>
       </Section>
     </>

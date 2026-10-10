@@ -9,7 +9,7 @@ export const siteConfig = {
   areaServed: "Andhra Pradesh",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   logoPath: "/mythri-infra-logo.svg",
-  ogImagePath: "/images/og-default.svg",
+  ogImagePath: "/images/og-default.webp",
   email: {
     primary: "mythriinfraa@gmail.com",
     secondary: "mythriinfraa1@gmail.com",

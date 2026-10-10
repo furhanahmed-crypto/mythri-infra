@@ -81,6 +81,30 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done · `[-]` blocked / deferre
 - [x] Map embed + Get Directions + WhatsApp
 - [x] Metadata + GeneralContractor + ContactPoint schema
 
+## Phase 2.5 — v2 redesign (shadcn + themes + motion)
+
+- [x] Init shadcn/ui (Radix base, Nova preset) and add core components
+- [x] Replace shadcn colour variables with brand light + dark palettes (OKLCH)
+- [x] `next-themes` provider + Light / Dark click toggle in header (no System)
+- [x] Framer Motion fluid primitives (`Reveal`, `Stagger`, `CountUp`, `ContourField`) with reduced-motion support
+- [x] Redesign header (sliding nav pill, mobile `Sheet`) and footer
+- [x] Redesign all six pages + 404 with shadcn components
+- [x] Projects filter on shadcn `Tabs` with layout animations; tables on shadcn `Table`
+- [x] Services scroll-spy index; Capabilities scroll-linked process timeline + HTML org chart
+- [x] Enquiry form on shadcn inputs with inline validation and animated success state
+- [x] Update DESIGN, ARCHITECTURE, RULES, MEMORY, PRD, AGENTS, README for v2
+- [ ] Client review of v2 look in both themes (confirm dark mode is wanted at launch)
+
+## Phase 2.6 — v3 visual upgrade (agency request)
+
+- [x] Home hero uses the ONGC Project Works photo with a featured-project caption
+- [x] Display font (Bricolage Grotesque) for headings; larger type scale
+- [x] Burnt-amber `primary-deep` token; gradient primary buttons with shine; gradient heading highlights
+- [x] Hook-based interactions: `SpotlightCard`, `Tilt`, `Magnetic`, `CursorGlow`, `RotatingWords`, `ParallaxMedia`, `BackToTop`, header scroll progress
+- [x] Home: aurora hero, floating glass cards, dark stats panel with border beam, client marquee, dark "Why" band
+- [x] Interior pages: aurora page headers with parallax photo; spotlight fleet/values cards; tilt project cards
+- [ ] Client sign-off on v3 look; Lighthouse re-check (LCP / CLS) with effects on
+
 ## Phase 3 — Form backend & integrations
 
 - [x] `POST /api/contact` validation + rate limit
@@ -92,13 +116,16 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done · `[-]` blocked / deferre
 ## Phase 4 — Assets & client confirmations
 
 - [ ] Replace logo with final SVG/PNG
-- [ ] Import 15–25 real site photos (WebP, &lt;200KB, correct alts)
-- [ ] Partner photos + bios
+- [x] Temporary construction photos filled (Wikimedia Commons WebP; hero is Andhra Pradesh excavator) — **replace with Mythri / ImagesBazaar-licensed photos before go-live**
+- [x] Partner photo slots filled with temporary AI dummy portraits (layout only)
+- [ ] Replace partner dummies + add bios with client-supplied assets before go-live
+- [x] Diversified fleet / service / project slots (one intentional shared excavator for earthwork + EX-200)
 - [ ] Confirm 2002 / 2016 framing in copy
 - [x] Client logo permissions or text-only trust row (text fallback shipped)
 - [ ] Domain + domain email cutover (update schema + footer)
 - [ ] Google Business Profile + map link
 - [-] Optional: certificates / appreciation letters section
+- [-] ImagesBazaar assets — requires paid account / licence; cannot scrape (see `public/images/IMAGE_CREDITS.md`)
 
 ## Phase 5 — QA & launch
 
@@ -124,4 +151,4 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done · `[-]` blocked / deferre
 
 ## Current focus
 
-**Application v1 is implemented.** Next: client asset drop (logo, photos, bios), configure `NEXT_PUBLIC_SITE_URL` / Resend / GA4, then deploy and run Rich Results + Lighthouse.
+**v2 redesign is implemented** (shadcn/ui, light + dark, fluid motion). Next: client review of the new look, client asset drop (logo, photos, bios), configure `NEXT_PUBLIC_SITE_URL` / Resend / GA4, then deploy and run Rich Results + Lighthouse (check LCP with motion enabled).

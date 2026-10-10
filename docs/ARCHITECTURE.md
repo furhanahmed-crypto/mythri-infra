@@ -9,7 +9,11 @@ A mostly static, SEO-first marketing site with one dynamic surface: the contact 
 | Layer | Choice | Rationale |
 |-------|--------|-----------|
 | Framework | Next.js (App Router) + TypeScript | SSG/SSR, metadata API, API routes for form |
-| Styling | Tailwind CSS + CSS variables for tokens | Matches DESIGN.md tokens; fast iteration |
+| Styling | Tailwind CSS v4 + shadcn CSS variables (OKLCH) | Matches DESIGN.md tokens; light/dark via `.dark` class |
+| UI components | shadcn/ui (Radix base, Nova preset) in `src/components/ui` | Accessible primitives (Sheet, Tabs, Select, DropdownMenu…) |
+| Theming | `next-themes` (class strategy, default light) | Light ↔ Dark click toggle without hydration flash |
+| Motion | `framer-motion` | Spring "fluid" reveals, layout animations, scroll-linked timeline |
+| Icons | `lucide-react` | Decorative, `aria-hidden` |
 | Hosting | Vercel (or equivalent Node-capable host) | Edge CDN, HTTPS, env secrets |
 | Forms | Next.js Route Handler → email provider | Resend / Nodemailer / SES |
 | Analytics | GA4 via `@next/third-parties` or gtag | Call / WhatsApp / form events |
@@ -65,21 +69,34 @@ mythri-infra/
 │   │   ├── robots.ts
 │   │   └── api/contact/route.ts
 │   ├── components/
-│   │   ├── layout/   Header, Footer, WhatsAppFloat
-│   │   ├── seo/      JsonLd
-│   │   ├── ui/       Button, Section, Card primitives
-│   │   └── forms/    EnquiryForm
+│   │   ├── ui/            shadcn/ui only (generated; edit sparingly)
+│   │   ├── site/          Container, Section, SectionHeading, PageHeader, MediaPlaceholder, TrackedLink
+│   │   ├── layout/        Header, Footer, Logo, ThemeToggle, WhatsAppFloat
+│   │   ├── motion/        Reveal/Stagger, CountUp, ContourField
+│   │   ├── providers/     Providers (ThemeProvider + MotionConfig + TooltipProvider)
+│   │   ├── sections/      ClosingCta
+│   │   ├── services/      ServiceIndex (scroll-spy)
+│   │   ├── projects/      ProjectFilters (Tabs + Table)
+│   │   ├── capabilities/  ProcessTimeline
+│   │   ├── forms/         EnquiryForm
+│   │   ├── analytics/     GoogleAnalytics
+│   │   └── seo/           JsonLd
 │   ├── content/      # typed page copy / SEO strings (derived from PDF)
-│   ├── lib/          # email, analytics helpers, constants
-│   └── styles/
+│   └── lib/          # site config, schema, metadata, email, analytics, utils (cn), slug
+├── components.json   # shadcn config
 └── Mythri_Infra_Website_Content_SEO_Handover.pdf
 ```
+
+### Server vs client components
+
+Pages are Server Components (static). Client components are limited to: header/nav, theme toggle, motion primitives, project filters, service index, process timeline, enquiry form, tracked links, WhatsApp button. Server pages pass content into client motion wrappers as children, so copy is always in the SSR HTML.
 
 ## 4. Components & responsibilities
 
 | Component | Responsibility |
 |-----------|----------------|
-| `Header` | Logo, 6 nav links, sticky, Call Now `tel:+917993949799` |
+| `Header` | Logo, 6 nav links (sliding pill), theme toggle, Call Now `tel:+917993949799`, mobile `Sheet` menu |
+| `Providers` | `next-themes` ThemeProvider, `MotionConfig reducedMotion="user"`, TooltipProvider |
 | `Footer` | Tagline, quick links, both addresses (`<address>`), phones, email, GSTIN, © 2026 — no heading tags |
 | `WhatsAppFloat` | Mobile floating link `https://wa.me/917993949799`; fire GA4 event |
 | `EnquiryForm` | Client validation + multipart upload (BOQ ≤ 10 MB); POST API |
@@ -149,6 +166,9 @@ mythri-infra/
 4. **Semantic HTML first** — cards/sections are layout, not heading spam; numbers strip uses `<p>`/`<strong>`, not headings.
 5. **Analytics events on CTAs** — not only pageviews.
 6. **Placeholder strategy** — until client assets arrive, use labeled placeholders that never ship stock skyscraper imagery.
+7. **shadcn/ui as the component layer** — generated into the repo (not a dependency), themed only through CSS variables in `globals.css`.
+8. **CSS entrance for above-the-fold, Framer Motion below** — hero/page-header text animates with `tw-animate-css` so it paints before hydration; in-view reveals use Framer.
+9. **Cache Components is on** (`next.config.ts`) — avoid `new Date()`/random values during prerender and route-segment `runtime` exports.
 
 ## 10. Environments
 
@@ -165,5 +185,6 @@ Secrets only via environment variables (see SECURITY.md).
 - Hero image heavily compressed; prioritize LCP element
 - No autoplay video
 - Lazy-load below-fold images
-- Prefer system-font fallback while loading Inter / Manrope / Poppins (one family only)
-- Avoid heavy client JS; keep form and analytics as the main client bundles
+- Bricolage Grotesque (`--font-display`, headings) + Manrope (`--font-sans`, body) via `next/font` with `display: swap`
+- Client JS is mainly framer-motion + Radix primitives; keep new client components small and avoid importing heavy libraries into pages
+- Motion only animates transform/opacity/filter; nothing that triggers layout shift

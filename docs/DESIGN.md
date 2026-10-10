@@ -1,208 +1,194 @@
-# DESIGN — Mythri Infra Website
+# DESIGN — Mythri Infra Website (v3)
+
+v2 introduced shadcn/ui, light + dark themes and Framer Motion "fluid" animations. v3 (agency request: "too simple") adds a display font, warm amber gradients, ambient light effects and pointer-driven micro-interactions. Brand constraints from the Digi Carotene handover still apply.
 
 ## 1. Design direction
 
-**Clean and simple construction-industry site:** white background, charcoal text, one accent (construction yellow). Generous whitespace. Mobile first. Real site photography only — excavators, dumpers, sand reaches, finished roads. No stock skyscrapers, no purple gradients, no glassmorphism, no emoji decoration.
+**Modern, warm, construction-grade.** White (light) or deep charcoal (dark) surfaces, charcoal text, construction yellow `#E8A100` warming into a burnt-amber shade for gradients. Strong display type, real site photography, and contrast rhythm from dark bands (stats panel, "Why" band, closing CTA) between light sections.
 
-Tone: capable, local, trustworthy — not corporate-glossy or “startup SaaS.”
+Tone: capable, local, trustworthy — premium, but still a site office, not a SaaS landing page.
 
-## 2. Brand & visual identity
+Visual motifs (all decorative, `aria-hidden`):
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-bg` | `#FFFFFF` | Page background |
-| `--color-surface` | `#F7F8F9` | Subtle section banding (alternate sections only) |
-| `--color-text` | `#1F2328` | Body and headings |
-| `--color-text-muted` | `#5B6168` | Supporting copy, captions |
-| `--color-border` | `#E5E7EB` | Dividers, table rules, input borders |
-| `--color-accent` | `#E8A100` | Primary CTA, links hover underline, focus rings accent |
-| `--color-accent-hover` | `#C98B00` | Button hover |
-| `--color-accent-ink` | `#1F2328` | Text on accent buttons (high contrast) |
-| `--color-inverse` | `#1F2328` | Dark footer or dark strip if needed |
-| `--color-inverse-text` | `#FFFFFF` | Text on inverse |
+- **Aurora** (`.aurora`) — slowly drifting amber light behind heroes, page headers and dark panels
+- **Cursor glow** (`CursorGlow`) — soft amber light trailing the mouse across a section
+- **Survey grid** (`.bg-grid`) and **contour lines** (`ContourField`) — drawing-sheet and levelling nods
+- **Border beam** (`.border-beam`) — light travelling around dark panels
+- **Hatching** (`.bg-hatch`) — inside photo placeholders
 
-**Pending client:** final brand colours. Until approved, use charcoal + construction yellow above.
+Allowed with limits: gradient text on **one phrase per heading** (`Highlight` / `SectionHeading highlight`), glass cards (`backdrop-blur`) floating over photos or headers.
+
+Not allowed: purple/indigo themes, neon glows, extra hues beyond the amber family (plus WhatsApp green / status green dot), stock skylines, emoji decoration.
+
+## 2. Theme tokens
+
+Tokens are shadcn CSS variables in `src/app/globals.css`, written in OKLCH and exposed to Tailwind via `@theme inline`. Always use the semantic utilities (`bg-background`, `text-muted-foreground`, `bg-primary`, …), never raw hex in components.
+
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `background` | `#FFFFFF` | `#0E1013` | Page |
+| `foreground` | `#1F2328` (charcoal) | `#ECEDEF` | Text |
+| `card` / `popover` | `#FFFFFF` | `#15181C` | Cards, menus, sheets |
+| `primary` | `#E8A100` | `#F0AE1E` (slightly lifted for contrast) | CTAs, active states, accents |
+| `primary-foreground` | charcoal | `#0E1013` | Text on yellow |
+| `primary-deep` | burnt amber | burnt amber (lifted) | Gradient end stop only (`bg-brand-gradient`, primary buttons) |
+| `highlight-from` / `highlight-to` | darker ambers (≥ 3:1 on white) | bright ambers | `.text-gradient` heading highlights |
+| `secondary` / `muted` | `#F2F3F5` | `#1A1E22` / `#22262B` | Subtle fills, tab lists |
+| `muted-foreground` | `#5B6168` | `#9AA1A9` | Supporting copy |
+| `accent` | `#FBF3DF` (yellow tint) | `#2B2414` | Icon tiles, hover fills |
+| `border` / `input` | `#E5E7EB` | white 9% / 13% | Dividers, fields |
+| `ring` | yellow | yellow | Focus rings |
+| `destructive` | `#B42318` | `#F04438` | Form errors |
+| `surface` | `#F7F8F9` | `#121417` | Alternating section bands |
+| `inverse` / `inverse-foreground` | deep black (matches dark `background`) / light | deeper black / light | Legacy inverse token; footer uses forced `dark` + `bg-background` |
+| `whatsapp` | `#25D366` | slightly darker | Floating WhatsApp only |
+
+Radius: `--radius: 0.625rem`. Buttons and inputs use `rounded-lg`, cards `rounded-xl`, large panels `rounded-2xl`/`rounded-3xl`. No pill CTAs except the circular WhatsApp button.
+
+### Theme behaviour
+
+- `next-themes` with `attribute="class"`, **default light** (matches the handover); System preference disabled
+- Toggle: `ThemeToggle` icon button in the header — one click flips Light ↔ Dark
+- `<html suppressHydrationWarning>`; `disableTransitionOnChange` to avoid colour flashes
+- Embedded Google Map is colour-inverted in dark mode so it doesn't glare
+- `viewport.themeColor` set for both schemes
 
 ### Logo
 
-- File: `mythri-infra-logo.svg`
-- Header: left-aligned, clear space ≥ 16px
-- Do not stretch; max header height ~40–48px
-- Footer may use monochrome/logo-mark if needed for contrast
+Interim theme-aware wordmark (`Logo` component: yellow mark + "Mythri Infra"). Replace with the client's final logo when delivered. `public/mythri-infra-logo.svg` stays as the schema/OG logo.
 
 ## 3. Typography
 
-**One sans-serif family only** — choose **Inter**, **Manrope**, or **Poppins** (pick one project-wide; recommended: **Manrope** for slightly industrial feel, or **Inter** for neutrality).
+Two families via `next/font`: **Bricolage Grotesque** (`--font-display`, mapped to `font-heading`) for headings, numbers, logo wordmark and captions; **Manrope** (`--font-sans`) for body and UI.
 
-| Role | Size (mobile → desktop) | Weight | Notes |
-|------|-------------------------|--------|-------|
-| H1 | 1.75rem → 2.5rem | 700 | Page title; ~70 chars max line |
-| H2 | 1.375rem → 1.75rem | 700 | Section |
-| H3 | 1.125rem → 1.25rem | 600 | Cards, service names |
-| Body | 1rem → 1.0625rem | 400 | Line-height 1.6 |
-| Small / label | 0.875rem | 500 | Numbers strip labels, table meta |
-| Button | 0.9375rem | 600 | Sentence case |
+| Role | Size | Weight | Notes |
+|------|------|--------|-------|
+| H1 | `clamp(2.25rem → 4.25rem)` | 800 | Line-height 1.02, tracking -0.03em, `text-wrap: balance` |
+| H2 | `clamp(1.75rem → 3rem)` | 700 | Line-height 1.08 |
+| H3 | `clamp(1.125rem → 1.35rem)` | 650 | |
+| Body | 1rem, lead paragraphs `text-lg`/`text-xl` | 400 | Line-height 1.65, `text-wrap: pretty` |
+| Eyebrow | `text-[0.7rem]`, `tracking-[0.18em]`, uppercase | 600 | Amber-tinted pill with a pulsing dot |
+| Numbers | `text-4xl`–`text-6xl`, `tabular-nums`, gradient | 800 | Numbers strip only |
 
 Rules:
 
-- Exactly one H1 per page
-- Never skip heading levels
-- Footer and numbers strip: **not** headings — use `<p>` / `<strong>` / `<address>`
-- Max ~70 characters per line for body in reading columns (`max-width` ~40–42rem for prose)
+- Exactly one H1 per page; never skip levels
+- Footer and numbers strip are **not** headings (`<p>`, `<strong>`, `<address>`)
+- Prose max width ~42rem (`max-w-2xl`)
+- Eyebrows are short UI labels ("Services", "Clients", "Process"); headings and body copy stay verbatim from the handover
 
-## 4. Spacing scale
+## 4. Spacing & layout
 
-Use a 4px base:
-
-`4, 8, 12, 16, 24, 32, 48, 64, 96`
-
-| Context | Guidance |
-|---------|----------|
-| Section vertical padding | 48–64px mobile, 64–96px desktop |
-| Component gap | 16–24px |
-| Card internal padding | 16–24px |
-| Page horizontal gutter | 16px mobile, 24–32px tablet, constrained content `max-width: 72rem` centered |
-
-Generous whitespace is a brand requirement — prefer more space over denser packing.
-
-## 5. Layout patterns
-
-### Header (all pages)
-
-- Sticky top
-- Logo | nav (Home, About, Services, Projects, Capabilities, Contact) | **Call Now** button
-- Mobile: hamburger or compact nav; Call Now remains visible; WhatsApp floats separately
-- Active link: charcoal underline or accent underline (2px)
-
-### Footer (all pages)
-
-- Tagline: “Mythri Infra — Earthwork & Infrastructure Contractors, Kakinada”
-- Quick links
-- Head office + branch office
-- Phones + email + GSTIN + © 2026
-- Semantic `<address>` for physical addresses; no H1–H3 in footer
-
-### Floating WhatsApp
-
-- Mobile only (or mobile-primary)
-- Fixed bottom-right, above safe area
-- Brand green WhatsApp mark is allowed for recognition; keep size modest (~48–56px tap target)
+- Container: `max-w-7xl`, gutters `px-5 / sm:px-6 / lg:px-8` (`components/site/Container`)
+- Section rhythm: `py-16 md:py-24 lg:py-28` (`components/site/Section`); `surface` prop for alternating bands
+- Common layouts: 12-column grids with a sticky left heading (`lg:col-span-4/5`, `lg:sticky lg:top-28`) and content on the right
+- Card gaps 16–24px; card padding 20–32px
 
 ### Page shells
 
-1. **Home:** Hero (full-bleed image) → Numbers strip → What We Do (5 icon cards) → Trusted By → Why Choose → Featured Projects → Closing CTA  
-2. **Interior pages:** Page header (image + H1 + intro) → content sections → end CTA  
-3. **Contact:** Two-column (details | form) stacking to single column on mobile → Map section
+1. **Home:** hero (copy left with gradient "Kakinada" + drawn underline; ONGC project photo right with tilt, glass caption and two floating cards; aurora + grid + contours + cursor glow) → dark stats panel overlapping the hero edge → What We Do (spotlight bento linking to each service) → Trusted By (two-row marquee) → Why Choose (dark band, sticky heading + spotlight cards) → Featured Projects (tilt cards) → closing CTA panel (border beam)
+2. **Interior pages:** `PageHeader` (breadcrumb, H1, intro, optional actions, wide photo) → sections → closing CTA
+3. **Services:** sticky "On this page" index with scroll-spy (desktop) + alternating image/text service blocks
+4. **Projects:** shadcn `Tabs` filter → animated featured cards → shadcn `Table` (2016–present) → team-experience timeline (2002–2015)
+5. **Capabilities:** fleet card grid with count chips → HTML org chart → scroll-linked process timeline
+6. **Contact:** details cards (left) + form card (right) → map with Directions/WhatsApp
 
-### Hero
+### Header
 
-- Full-bleed photographic plane (edge-to-edge)
-- Overlay: light dark gradient only as needed for text contrast — keep copy charcoal on white panel **or** white text on darkened photo; pick one pattern sitewide
-- Hero budget: brand/logo (header), one H1, one short paragraph, one CTA group — no stats in the hero overlay except the dedicated Numbers strip below
+Sticky; solid background that gains a hairline border, soft shadow and light blur after scroll. Desktop nav uses a sliding pill (`layoutId`) for hover/active plus a yellow dot under the active item. Right side: theme toggle, **Call Now** (icon-only below 380px, label kept for screen readers), and on mobile a `Sheet` menu with nav, Call and WhatsApp buttons.
 
-## 6. Components
+### Footer
 
-### Buttons
+Inverse band: logo + tagline, quick links, offices (`<address>`), contact, then GSTIN and © 2026. Column labels are `<p>`, not headings.
 
-| Variant | Style |
-|---------|-------|
-| Primary | bg accent `#E8A100`, text charcoal, radius 4–6px, padding 12×20 |
-| Secondary | outline charcoal or accent border, transparent fill |
-| Text / link | Accent or charcoal underline on hover |
+## 5. Components (shadcn/ui)
 
-No pill-full (`rounded-full`) CTAs; slight radius only.
+Installed in `src/components/ui/` (Radix base, Nova preset): `button`, `card`, `badge`, `input`, `textarea`, `label`, `select`, `sheet`, `table`, `tabs`, `separator`, `dropdown-menu`, `alert`, `aspect-ratio`, `tooltip`.
 
-### Cards
+| Need | Use |
+|------|-----|
+| CTAs | `Button` with `asChild` around `Link` / `TrackedLink`; `size="xl"` (44px) for page CTAs |
+| Cards | `Card` / `CardContent`; hover = lift `-translate-y-1` + shadow |
+| Labels/chips | `Badge` (`secondary` for years/categories) |
+| Mobile nav | `Sheet` (right) |
+| Theme | `DropdownMenu` radio group |
+| Filters | `Tabs` |
+| Tabular data | `Table` inside a `Card` |
+| Form | `Input`, `Textarea`, `Select`, `Label`, `Alert` |
 
-- Allowed for interactive or scannable groups: service cards, project cards, fleet cards
-- Prefer light border or spacing separation over heavy shadow
-- Icon cards (What We Do): decorative icons `alt=""`
+Custom site primitives live in `src/components/site/` (`Container`, `Section`, `SectionHeading`, `PageHeader`, `MediaPlaceholder`, `TrackedLink`). Do not put non-shadcn components in `components/ui/`.
 
-### Numbers strip
+Button sizes: shadcn's defaults are compact (h-8/h-9). Use `xl` (h-11, added locally) for any primary page action so tap targets stay ≥ 44px.
 
-- Four large figures + small labels
-- Not headings; use `<p>` + `<strong>` for the number
+## 6. Motion — "fluid" system
 
-### Logo row (Trusted By)
+Library: `framer-motion`. Wrapped in `MotionConfig reducedMotion="user"`.
 
-- Grayscale logos, even spacing
-- If logo permission missing: plain text names in a quiet row
+**Character:** low-stiffness springs that settle like water finding its level. Elements rise ~28px, fade in and un-blur (6px → 0).
 
-### Tables (Projects)
+```ts
+fluidSpring = { type: "spring", stiffness: 60, damping: 17, mass: 0.9 }
+```
 
-- Responsive: horizontal scroll on small screens or stacked definition lists
-- Clear Year / Project / Location / Client columns
-- Separate “Team’s Earlier Experience” table with explanatory intro
+| Primitive | File | Use |
+|-----------|------|-----|
+| `Reveal` | `motion/Reveal.tsx` | Single block entering viewport (once) |
+| `Stagger` + `StaggerItem` | `motion/Reveal.tsx` | Grids/lists rippling in, 60–90ms apart |
+| `CountUp` | `motion/CountUp.tsx` | Numbers strip; SSR renders the final value |
+| `ContourField` | `motion/ContourField.tsx` | Hero contour lines drawing in, then drifting |
+| `ProcessTimeline` | `capabilities/ProcessTimeline.tsx` | Line fills with scroll progress (spring-smoothed) |
+| Layout animations | Projects filter, nav pill, service index | `layout` / `layoutId` + `AnimatePresence` |
+| `SpotlightCard` | `motion/SpotlightCard.tsx` | Cursor-following fill + lit border (services, why, values, fleet) |
+| `Tilt` | `motion/Tilt.tsx` | 3D tilt + glare on hero photo and project cards (mouse only) |
+| `Magnetic` | `motion/Magnetic.tsx` | Primary CTAs drift toward the cursor |
+| `CursorGlow` | `motion/CursorGlow.tsx` | Amber light trailing the cursor across a section |
+| `RotatingWords` | `motion/RotatingWords.tsx` | Hero floating card cycling service names (pauses on hover) |
+| `ParallaxMedia` | `motion/ParallaxMedia.tsx` | Page-header photo zooms out with scroll (inside overflow-hidden) |
+| `BackToTop` | `layout/BackToTop.tsx` | Desktop button with a scroll-progress ring |
+| Header progress | `layout/Header.tsx` | Gradient bar under the header tracks page scroll |
+| CSS effects | `globals.css` | `.aurora`, `.marquee`, `.btn-shine`, `.border-beam`, `.text-gradient`, `.draw-line`, `.float-slow` |
 
-### Form controls
+Shared hook: `hooks/use-pointer-position.ts` (pointer position as motion values — no React re-renders on move).
 
-- Labels above fields; required marked with *
-- 44px min height inputs
-- Focus: 2px accent or charcoal ring
-- Error text muted red (`#B42318`), adjacent to field
-- File input: accept PDF/Excel, show 10 MB limit helper text
+Rules:
 
-### Map
-
-- Embedded iframe or map image + Get Directions button
-- Adjacent WhatsApp CTA
+- **Above-the-fold hero/page-header text uses CSS (`tw-animate-css`) entrance animations, not Framer.** It paints without waiting for hydration, protecting LCP.
+- Below-the-fold content uses `Reveal`/`Stagger` with `viewport={{ once: true }}`.
+- Never hide meaningful text behind JS-only state; SSR HTML must contain final copy (e.g. `CountUp`).
+- Reduced motion: transforms are disabled by `MotionConfig`; `Tilt`, `Magnetic`, `ParallaxMedia` and `RotatingWords` check `useReducedMotion`; aurora, marquee, float, gradient pan and border beam stop via a reduced-motion media query; the hero underline renders fully drawn.
+- Pointer effects (`Tilt`, `Magnetic`, `CursorGlow`) only respond to `pointerType === "mouse"`.
+- Hover micro-interactions: 300–1000ms, transform/opacity/colour only.
+- No autoplay video, no image carousels, no parallax that shifts layout. The client-name marquee pauses on hover; its duplicate track is `aria-hidden`.
 
 ## 7. Imagery
 
 | Rule | Detail |
 |------|--------|
 | Format | WebP for photos; SVG for logo/diagrams |
-| Weight | Target &lt; 200 KB each |
-| Attributes | Always width/height; lazy below fold; hero eager |
-| Alt text | Exactly as specified in the PDF handover |
+| Weight | Target < 200 KB each |
+| Attributes | Width/height set; lazy below the fold; hero eager |
+| Alt text | Exactly as in the handover |
 | Content | Real sites only |
-| Placeholders | Neutral gray + caption of intended shot name until assets arrive |
+| Placeholder | `MediaPlaceholder`: hatched muted panel, camera icon, file name + alt text, `role="img"` with the alt as label |
 
-Suggested hero/content filenames are defined in the PDF (e.g. `home-hero-fleet.webp`, `fleet-dumper.webp`).
+Team structure is rendered as an accessible HTML org chart (`figure role="img"` with the handover alt text) so it adapts to both themes.
 
-## 8. Responsive breakpoints
+## 8. Responsive
 
-| Name | Min width | Notes |
-|------|-----------|-------|
-| sm | 640px | |
-| md | 768px | Nav expands; contact two-column |
-| lg | 1024px | Full desktop header |
-| xl | 1280px | Max content comfort |
+Mobile-first. Breakpoints: `sm 640`, `md 768`, `lg 1024` (desktop nav appears), `xl 1280`. No horizontal scroll at 360px. Tables scroll horizontally inside their card on small screens. Floating WhatsApp shows below `lg`.
 
-Mobile-first CSS. Test sticky header + WhatsApp + click-to-call on real phones.
+## 9. Accessibility
 
-## 9. Motion & interaction
-
-Keep motion subtle and purposeful (2–3 patterns max):
-
-1. Header shadow appears after scroll (short transition)
-2. Buttons: background/border 150–200ms ease
-3. Optional fade-up on section enter (respect `prefers-reduced-motion: reduce` — disable transforms)
-
-No autoplay video, no parallax heavy enough to hurt LCP, no infinite carousels for hero.
-
-## 10. Accessibility
-
-- Colour contrast: charcoal on white and charcoal on accent meet WCAG AA
-- Focus visible on all interactive elements
+- AA contrast in both themes (charcoal on yellow for primary buttons)
+- Visible focus rings (`ring` = yellow)
 - Skip-to-content link
-- Form errors announced / associated with `aria-describedby`
-- Map iframe titled appropriately
+- Form: labels, `aria-invalid`, `aria-describedby` → error text with `role="alert"`, focus moves to first invalid field
+- Breadcrumbs use `nav[aria-label="Breadcrumb"]` and `aria-current="page"`
+- Icons decorative (`aria-hidden`); icon-only buttons have `aria-label`
+- Map iframe has a descriptive `title`
 
-## 11. Do / Don’t
+## 10. Do / Don't
 
-**Do**
+**Do:** semantic tokens, shadcn components, the two-font pairing, real photography, light/dark section rhythm, pointer effects that respect reduced motion, Call/WhatsApp always within one tap.
 
-- White + charcoal + yellow
-- Real construction photography
-- Generous whitespace
-- One font family
-- Sticky Call Now + WhatsApp path to contact
-
-**Don’t**
-
-- Purple/indigo SaaS themes, cream-serif editorial looks, neon glows
-- Stock city skylines
-- Heading tags in footer or numbers strip
-- Dense dashboard-style first viewport
-- Multiple accent colours or gradient text
+**Don't:** raw hex in components, hues outside the amber family, gradient text on whole headings, heading tags in footer/numbers, JS-gated hero text, long or bouncy animations that delay reading, rewriting handover copy for style.

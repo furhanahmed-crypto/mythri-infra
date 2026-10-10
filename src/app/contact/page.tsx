@@ -1,143 +1,188 @@
+import { Building2, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 import { contactContent } from "@/content/contact";
 import { siteConfig } from "@/lib/site";
 import { buildPageMetadata } from "@/lib/metadata";
 import { generalContractorSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Section } from "@/components/ui/Section";
+import { PageHeader } from "@/components/site/PageHeader";
+import { Section } from "@/components/site/Section";
+import { TrackedLink } from "@/components/site/TrackedLink";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
-import { TrackedLink } from "@/components/ui/TrackedLink";
-import { ButtonLink } from "@/components/ui/Button";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = buildPageMetadata({
   ...contactContent.seo,
   path: "/contact",
 });
 
+const telLink = "font-semibold text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline";
+
 export default function ContactPage() {
   const { header, details, form, map } = contactContent;
+  const { phone, email, addresses } = siteConfig;
 
   return (
     <>
       <JsonLd data={generalContractorSchema()} />
 
-      <PageHeader h1={header.h1} intro={header.intro} />
+      <PageHeader crumb="Contact" h1={header.h1} intro={header.intro}>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="xl">
+            <TrackedLink href={`tel:${phone.primaryTel}`} event="click_to_call">
+              <Phone data-icon="inline-start" aria-hidden="true" />
+              Call {phone.primaryDisplay}
+            </TrackedLink>
+          </Button>
+          <Button asChild size="xl" variant="outline">
+            <TrackedLink href={siteConfig.whatsappUrl} event="whatsapp_click" external>
+              <MessageCircle data-icon="inline-start" aria-hidden="true" />
+              WhatsApp Us
+            </TrackedLink>
+          </Button>
+        </div>
+      </PageHeader>
 
       <Section>
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div className="space-y-8">
-            <h2>{details.h2}</h2>
-
-            <div>
-              <h3>Head Office</h3>
-              <address className="mt-2 not-italic text-text-muted">
-                {siteConfig.addresses.head.lines.join(", ")}
-              </address>
-            </div>
-
-            <div>
-              <h3>Branch Office</h3>
-              <address className="mt-2 not-italic text-text-muted">
-                {siteConfig.addresses.branch.lines.join(", ")}
-              </address>
-            </div>
-
-            <div>
-              <h3>Phone</h3>
-              <p className="mt-2 space-y-1 text-text-muted">
-                <span className="block">
-                  Mr. D. Raja Gopal Raju (Managing Partner):{" "}
-                  <TrackedLink
-                    href={`tel:${siteConfig.phone.primaryTel}`}
-                    event="click_to_call"
-                    className="font-medium text-text hover:text-accent"
-                  >
-                    {siteConfig.phone.primaryDisplay}
-                  </TrackedLink>
-                  {" · "}
-                  <TrackedLink
-                    href={`tel:${siteConfig.phone.secondaryTel}`}
-                    event="click_to_call"
-                    className="font-medium text-text hover:text-accent"
-                  >
-                    {siteConfig.phone.secondaryDisplay}
-                  </TrackedLink>
-                </span>
-                <span className="block">
-                  Mr. D. Murali Mohan Varma (Partner):{" "}
-                  <TrackedLink
-                    href={`tel:${siteConfig.phone.partnerMuraliTel}`}
-                    event="click_to_call"
-                    className="font-medium text-text hover:text-accent"
-                  >
-                    {siteConfig.phone.partnerMuraliDisplay}
-                  </TrackedLink>
-                </span>
-                <span className="block">
-                  Office:{" "}
-                  <TrackedLink
-                    href={`tel:${siteConfig.phone.officeTel}`}
-                    event="click_to_call"
-                    className="font-medium text-text hover:text-accent"
-                  >
-                    {siteConfig.phone.officeDisplay}
-                  </TrackedLink>
-                </span>
-              </p>
-            </div>
-
-            <div>
-              <h3>Email</h3>
-              <p className="mt-2 text-text-muted">
-                <a
-                  href={`mailto:${siteConfig.email.primary}`}
-                  className="font-medium text-text hover:text-accent"
-                >
-                  {siteConfig.email.primary}
-                </a>
-                {" · "}
-                <a
-                  href={`mailto:${siteConfig.email.secondary}`}
-                  className="font-medium text-text hover:text-accent"
-                >
-                  {siteConfig.email.secondary}
-                </a>
-              </p>
-            </div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Contact details */}
+          <div className="lg:col-span-5">
+            <Reveal>
+              <h2>{details.h2}</h2>
+            </Reveal>
+            <Stagger className="mt-8 grid gap-4">
+              <StaggerItem>
+                <Card className="flex-row gap-4 p-5">
+                  <IconTile icon={Building2} />
+                  <div>
+                    <h3 className="text-base!">Head Office</h3>
+                    <address className="mt-1 text-sm leading-relaxed text-muted-foreground not-italic">
+                      {addresses.head.lines.join(", ")}
+                    </address>
+                  </div>
+                </Card>
+              </StaggerItem>
+              <StaggerItem>
+                <Card className="flex-row gap-4 p-5">
+                  <IconTile icon={MapPin} />
+                  <div>
+                    <h3 className="text-base!">Branch Office</h3>
+                    <address className="mt-1 text-sm leading-relaxed text-muted-foreground not-italic">
+                      {addresses.branch.lines.join(", ")}
+                    </address>
+                  </div>
+                </Card>
+              </StaggerItem>
+              <StaggerItem>
+                <Card className="flex-row gap-4 p-5">
+                  <IconTile icon={Phone} />
+                  <div className="min-w-0">
+                    <h3 className="text-base!">Phone</h3>
+                    <div className="mt-1 space-y-1.5 text-sm text-muted-foreground">
+                      <p>
+                        Mr. D. Raja Gopal Raju (Managing Partner):{" "}
+                        <TrackedLink href={`tel:${phone.primaryTel}`} event="click_to_call" className={telLink}>
+                          {phone.primaryDisplay}
+                        </TrackedLink>
+                        {" · "}
+                        <TrackedLink href={`tel:${phone.secondaryTel}`} event="click_to_call" className={telLink}>
+                          {phone.secondaryDisplay}
+                        </TrackedLink>
+                      </p>
+                      <p>
+                        Mr. D. Murali Mohan Varma (Partner):{" "}
+                        <TrackedLink href={`tel:${phone.partnerMuraliTel}`} event="click_to_call" className={telLink}>
+                          {phone.partnerMuraliDisplay}
+                        </TrackedLink>
+                      </p>
+                      <p>
+                        Office:{" "}
+                        <TrackedLink href={`tel:${phone.officeTel}`} event="click_to_call" className={telLink}>
+                          {phone.officeDisplay}
+                        </TrackedLink>
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </StaggerItem>
+              <StaggerItem>
+                <Card className="flex-row gap-4 p-5">
+                  <IconTile icon={Mail} />
+                  <div className="min-w-0">
+                    <h3 className="text-base!">Email</h3>
+                    <p className="mt-1 flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                      <a href={`mailto:${email.primary}`} className={telLink}>
+                        {email.primary}
+                      </a>
+                      <span aria-hidden="true">·</span>
+                      <a href={`mailto:${email.secondary}`} className={telLink}>
+                        {email.secondary}
+                      </a>
+                    </p>
+                  </div>
+                </Card>
+              </StaggerItem>
+            </Stagger>
           </div>
 
-          <div>
-            <h2 className="mb-6">{form.h2}</h2>
-            <EnquiryForm />
-          </div>
+          {/* Enquiry form */}
+          <Reveal className="lg:col-span-7" delay={0.1}>
+            <Card className="relative overflow-hidden py-0 shadow-xl shadow-foreground/5">
+              <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/60 to-transparent" aria-hidden="true" />
+              <CardContent className="p-6 md:p-10">
+                <h2 className="mb-8">{form.h2}</h2>
+                <EnquiryForm />
+              </CardContent>
+            </Card>
+          </Reveal>
         </div>
       </Section>
 
+      {/* Map */}
       <Section surface>
-        <h2>{map.h2}</h2>
-        <div className="mt-6 overflow-hidden rounded-[5px] border border-border">
-          <iframe
-            title="Mythri Infra Head Office, Turangi, Kakinada"
-            src={siteConfig.addresses.head.mapsEmbedUrl}
-            className="h-80 w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <Reveal>
+            <h2>{map.h2}</h2>
+            <p className="mt-3 text-muted-foreground">
+              {addresses.head.label}: {addresses.head.lines.join(", ")}
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="xl">
+              <a href={addresses.head.mapsUrl} target="_blank" rel="noopener noreferrer">
+                <Navigation data-icon="inline-start" aria-hidden="true" />
+                Get Directions
+              </a>
+            </Button>
+            <Button asChild size="xl" variant="outline">
+              <TrackedLink href={siteConfig.whatsappUrl} event="whatsapp_click" external>
+                <MessageCircle data-icon="inline-start" aria-hidden="true" />
+                WhatsApp Us
+              </TrackedLink>
+            </Button>
+          </Reveal>
         </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <ButtonLink href={siteConfig.addresses.head.mapsUrl} external>
-            Get Directions
-          </ButtonLink>
-          <TrackedLink
-            href={siteConfig.whatsappUrl}
-            event="whatsapp_click"
-            external
-            className="inline-flex min-h-11 items-center justify-center rounded-[5px] border border-text px-5 py-3 text-[0.9375rem] font-semibold transition-colors hover:border-accent hover:bg-accent/10"
-          >
-            WhatsApp Us
-          </TrackedLink>
-        </div>
+        <Reveal className="mt-8">
+          <div className="overflow-hidden rounded-2xl border shadow-sm">
+            <iframe
+              title="Mythri Infra Head Office, Turangi, Kakinada"
+              src={addresses.head.mapsEmbedUrl}
+              className="h-80 w-full border-0 md:h-[28rem] dark:opacity-90 dark:[filter:invert(0.9)_hue-rotate(180deg)_saturate(0.6)]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </Reveal>
       </Section>
     </>
+  );
+}
+
+function IconTile({ icon: Icon }: { icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground" aria-hidden="true">
+      <Icon className="size-5" />
+    </span>
   );
 }

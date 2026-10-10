@@ -23,7 +23,9 @@ Primary copy/SEO source: `Mythri_Infra_Website_Content_SEO_Handover.pdf`.
 ## Non-negotiables
 
 - Exact meta titles/descriptions/keywords and heading hierarchy from the handover
-- Charcoal `#1F2328` + accent `#E8A100` + white; one sans font; real construction photos only
+- Brand palette via shadcn tokens only: charcoal `#1F2328` + accent `#E8A100`, light (default) and dark themes (burnt-amber `primary-deep` only for gradients); Bricolage Grotesque headings + Manrope body; real construction photos only
+- Build UI from shadcn/ui (`src/components/ui`) and site primitives (`src/components/site`); animate with the shared Framer Motion primitives (`src/components/motion`)
+- Every change must work in light and dark mode and with reduced motion
 - No stock skyscrapers; no turnover figures; no NOTE text in the UI
 - Client logos only with permission; otherwise text names
 - Form: server validation, 10 MB PDF/Excel cap, spam protection, no public upload directory
@@ -40,8 +42,18 @@ Primary copy/SEO source: `Mythri_Infra_Website_Content_SEO_Handover.pdf`.
 
 ## Stack target
 
-Next.js App Router + TypeScript + Tailwind. Details in ARCHITECTURE.md. Do not add a CMS, auth, or database unless the PRD is updated.
+Next.js App Router + TypeScript + Tailwind v4 + shadcn/ui + next-themes + framer-motion. Details in ARCHITECTURE.md; visual system and motion rules in DESIGN.md. Do not add a CMS, auth, or database unless the PRD is updated.
 
 ## Done looks like
 
 Pages match PRD acceptance, design tokens, and SEO checklist; contact path works; launch blockers tracked honestly in TASKS.md.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

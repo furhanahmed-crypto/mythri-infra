@@ -44,10 +44,14 @@ Without Resend keys, local form submissions validate and log to the server conso
 ## Stack
 
 - Next.js (App Router) + TypeScript
-- Tailwind CSS v4 + design tokens (`docs/DESIGN.md`)
-- Manrope font
+- Tailwind CSS v4 + shadcn/ui (Radix base) themed with brand OKLCH variables
+- Light / Dark / System themes via `next-themes`
+- Framer Motion "fluid" spring animations (reduced-motion aware)
+- Bricolage Grotesque (headings) + Manrope (body), lucide icons
 - Contact Route Handler → Resend
 - JSON-LD schema, sitemap, robots
+
+Add shadcn components with `npx shadcn@latest add <component>`; they land in `src/components/ui/`.
 
 ## Documentation
 
@@ -66,7 +70,7 @@ Content source of truth: `Mythri_Infra_Website_Content_SEO_Handover.pdf`.
 
 ## Status
 
-**v1 app implemented** (Phases 0–3). Remaining work is mostly client assets, env/host config, and launch QA — see `docs/TASKS.md`.
+**v2 redesign implemented** (shadcn/ui, light + dark, motion) on top of the v1 pages, SEO and contact API. Remaining work is mostly client review, client assets, env/host config, and launch QA — see `docs/TASKS.md`.
 
 Photo slots use labeled placeholders until real site images arrive. Trusted-by logos are text-only pending permission.
 

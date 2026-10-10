@@ -75,6 +75,8 @@ Global chrome: sticky header (logo, 6 nav links, Call Now), footer (quick links,
 - JSON-LD: Organization sitewide; GeneralContractor on Home & Contact; Service + BreadcrumbList on Services; ItemList + BreadcrumbList on Projects; BreadcrumbList on Capabilities
 - GA4 events for click-to-call, WhatsApp, and form submit (conversion)
 - Sticky header + floating WhatsApp (mobile)
+- Light theme by default (handover palette) with a Light ↔ Dark click toggle; both themes must meet AA contrast
+- Subtle, reduced-motion-aware entrance animations; content readable without JavaScript
 
 ### Contact form
 

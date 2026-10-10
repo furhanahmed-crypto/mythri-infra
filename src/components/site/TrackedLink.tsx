@@ -2,42 +2,41 @@
 
 import Link from "next/link";
 import { trackEvent, type AnalyticsEvent } from "@/lib/analytics";
-import { cn } from "@/lib/cn";
 
-type Props = {
+type Props = Omit<React.ComponentProps<"a">, "href"> & {
   href: string;
   event: AnalyticsEvent;
-  children: React.ReactNode;
-  className?: string;
   external?: boolean;
-  "aria-label"?: string;
 };
 
 export function TrackedLink({
   href,
   event,
-  children,
-  className,
   external,
-  "aria-label": ariaLabel,
+  onClick,
+  children,
+  ...rest
 }: Props) {
-  const onClick = () => trackEvent(event);
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    trackEvent(event);
+    onClick?.(e);
+  };
 
-  if (
+  const isNative =
     external ||
     href.startsWith("tel:") ||
     href.startsWith("mailto:") ||
-    href.startsWith("http")
-  ) {
+    href.startsWith("http");
+
+  if (isNative) {
     return (
       <a
         href={href}
-        className={cn(className)}
-        onClick={onClick}
-        aria-label={ariaLabel}
+        onClick={handleClick}
         {...(href.startsWith("http")
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
+        {...rest}
       >
         {children}
       </a>
@@ -45,12 +44,7 @@ export function TrackedLink({
   }
 
   return (
-    <Link
-      href={href}
-      className={cn(className)}
-      onClick={onClick}
-      aria-label={ariaLabel}
-    >
+    <Link href={href} onClick={handleClick} {...rest}>
       {children}
     </Link>
   );

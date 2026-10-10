@@ -8,9 +8,14 @@ export const homeContent = {
   },
   hero: {
     image: {
-      src: "/images/home-hero-fleet.webp",
-      alt: "Mythri Infra excavators and dumpers working on an earthwork site in Kakinada",
-      fileName: "home-hero-fleet.webp",
+      src: "/images/project-ongc-kakinada.webp",
+      alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
+      fileName: "project-ongc-kakinada.webp",
+    },
+    featured: {
+      label: "Featured project",
+      title: "ONGC Project Works, Kakinada",
+      meta: "Larsen & Toubro · 2019 – present",
     },
     h1: "Earthwork & Infrastructure Contractors in Kakinada",
     intro:

@@ -8,9 +8,9 @@ export const servicesContent = {
   },
   header: {
     image: {
-      src: "/images/services-hero.webp",
+      src: "/images/heroes/services.webp",
       alt: "Excavator loading a dumper during earthwork by Mythri Infra",
-      fileName: "services-hero.webp",
+      fileName: "services.webp",
     },
     h1: "Our Services",
     intro:
@@ -20,9 +20,9 @@ export const servicesContent = {
     {
       h2: "Earthwork & Site Development",
       image: {
-        src: "/images/service-earthwork.webp",
+        src: "/images/services/earthwork.webp",
         alt: "Soil filling and land levelling at Kakinada SEZ by Mythri Infra",
-        fileName: "service-earthwork.webp",
+        fileName: "earthwork.webp",
       },
       paragraphs: [
         "Excavation, soil filling, land levelling and filling of low-lying sites for SEZs, housing layouts and industrial projects. Our own excavators, dumpers, graders and rollers keep the job moving.",
@@ -32,9 +32,9 @@ export const servicesContent = {
     {
       h2: "Road Construction",
       image: {
-        src: "/images/service-road-construction.webp",
+        src: "/images/services/road-construction.webp",
         alt: "Internal road under construction with grader and roller, Kakinada",
-        fileName: "service-road-construction.webp",
+        fileName: "road-construction.webp",
       },
       paragraphs: [
         "Highway works and internal roads for industrial parks and townships, from formation and sub-grade to compaction.",
@@ -44,9 +44,9 @@ export const servicesContent = {
     {
       h2: "Drainage Works",
       image: {
-        src: "/images/service-drainage.webp",
+        src: "/images/services/drainage.webp",
         alt: "Site drain excavation work at an industrial site in Kakinada",
-        fileName: "service-drainage.webp",
+        fileName: "drainage.webp",
       },
       paragraphs: [
         "Storm water and site drains planned and built to keep large sites dry, safe and usable through the monsoon.",
@@ -56,9 +56,9 @@ export const servicesContent = {
     {
       h2: "Sand Excavation & Supply",
       image: {
-        src: "/images/service-sand-supply.webp",
+        src: "/images/services/sand-supply.webp",
         alt: "Sand excavation and loading at an open sand reach in East Godavari",
-        fileName: "service-sand-supply.webp",
+        fileName: "sand-supply.webp",
       },
       paragraphs: [
         "Manual and machine excavation, transportation, stocking and loading of sand for government schemes and private projects.",
@@ -68,9 +68,9 @@ export const servicesContent = {
     {
       h2: "Mining Support Works",
       image: {
-        src: "/images/service-mining-support.webp",
+        src: "/images/services/mining-support.webp",
         alt: "Heavy excavator and dumpers at a coal mining site",
-        fileName: "service-mining-support.webp",
+        fileName: "mining-support.webp",
       },
       paragraphs: [
         "Excavation and haulage support for coal and mineral mining operations, with heavy machines such as the ZX 470.",

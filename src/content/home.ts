@@ -8,9 +8,9 @@ export const homeContent = {
   },
   hero: {
     image: {
-      src: "/images/project-ongc-kakinada.webp",
+      src: "/images/projects/ongc-kakinada.webp",
       alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
-      fileName: "project-ongc-kakinada.webp",
+      fileName: "ongc-kakinada.webp",
     },
     featured: {
       label: "Featured project",
@@ -99,27 +99,27 @@ export const homeContent = {
         h3: "Internal Roads, Kakinada SEZ",
         p: "Auro Infra Pvt Ltd · 2024",
         image: {
-          src: "/images/project-kakinada-sez-roads.webp",
+          src: "/images/projects/kakinada-sez-roads.webp",
           alt: "Internal road construction at Kakinada SEZ by Mythri Infra",
-          fileName: "project-kakinada-sez-roads.webp",
+          fileName: "kakinada-sez-roads.webp",
         },
       },
       {
         h3: "Free Sand Policy Reaches, East Godavari",
         p: "District Level Sand Committee · 2025",
         image: {
-          src: "/images/project-teeparru-sand-reach.webp",
+          src: "/images/projects/teeparru-sand-reach.webp",
           alt: "Sand excavation and stocking at Teeparru sand reach, East Godavari",
-          fileName: "project-teeparru-sand-reach.webp",
+          fileName: "teeparru-sand-reach.webp",
         },
       },
       {
         h3: "ONGC Project Works, Kakinada",
         p: "Larsen & Toubro · 2019 – present",
         image: {
-          src: "/images/project-ongc-kakinada.webp",
+          src: "/images/projects/ongc-kakinada.webp",
           alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
-          fileName: "project-ongc-kakinada.webp",
+          fileName: "ongc-kakinada.webp",
         },
       },
     ],

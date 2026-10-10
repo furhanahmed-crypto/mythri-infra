@@ -23,7 +23,7 @@ Primary copy/SEO source: `Mythri_Infra_Website_Content_SEO_Handover.pdf`.
 ## Non-negotiables
 
 - Exact meta titles/descriptions/keywords and heading hierarchy from the handover
-- Brand palette via shadcn tokens only: charcoal `#1F2328` + accent `#E8A100`, light (default) and dark themes (burnt-amber `primary-deep` only for gradients); Bricolage Grotesque headings + Manrope body; real construction photos only
+- Brand palette via shadcn tokens only: logo navy `#002858` + steel greys, warm amber/copper CTA accent (complements navy for the earthwork niche); light (default) and navy-ink dark themes; Bricolage Grotesque headings + Manrope body; client logo from `public/images/brand/`; real construction photos only
 - Build UI from shadcn/ui (`src/components/ui`) and site primitives (`src/components/site`); animate with the shared Framer Motion primitives (`src/components/motion`)
 - Every change must work in light and dark mode and with reduced motion
 - No stock skyscrapers; no turnover figures; no NOTE text in the UI

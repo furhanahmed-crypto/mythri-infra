@@ -53,9 +53,10 @@ mythri-infra/
 │   ├── TASKS.md
 │   └── SECURITY.md
 ├── public/
-│   ├── images/          # WebP + SVG per handover file names
-│   ├── robots.txt
-│   └── mythri-infra-logo.svg
+│   ├── images/
+│   │   ├── brand/       # Client logo (SVG/JPG/WebP mark + lockups)
+│   │   ├── heroes/ services/ projects/ fleet/ team/ diagrams/ og/
+│   └── robots.txt
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx           # header, footer, Organization schema, GA4
@@ -107,7 +108,7 @@ Pages are Server Components (static). Client components are limited to: header/n
 
 - **No database in v1.** Copy, project tables, fleet counts, and SEO strings live in typed modules under `src/content/` (or MDX if preferred).
 - Source of truth for wording: the Digi Carotene PDF. Content modules should mirror it closely so SEO strings stay exact.
-- Images referenced by handover file names (e.g. `home-hero-fleet.webp`).
+- Images referenced by handover file names (e.g. `home-fleet.webp`).
 
 ## 6. APIs
 

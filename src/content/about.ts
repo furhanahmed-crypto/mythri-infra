@@ -8,9 +8,9 @@ export const aboutContent = {
   },
   header: {
     image: {
-      src: "/images/about-hero-team.webp",
+      src: "/images/heroes/about-team.webp",
       alt: "Mythri Infra site team at a road construction project in Andhra Pradesh",
-      fileName: "about-hero-team.webp",
+      fileName: "about-team.webp",
     },
     h1: "About Mythri Infra",
     intro: "Two decades of groundwork experience, one name you can rely on.",
@@ -34,7 +34,7 @@ export const aboutContent = {
         role: "Managing Partner",
         bio: "",
         image: {
-          src: "/images/partner-raja-gopal-raju.webp",
+          src: "/images/team/partner-raja-gopal-raju.webp",
           alt: "Mr. Dantuluri Raja Gopal Raju, Managing Partner, Mythri Infra",
           fileName: "partner-raja-gopal-raju.webp",
         },
@@ -44,7 +44,7 @@ export const aboutContent = {
         role: "Partner",
         bio: "",
         image: {
-          src: "/images/partner-murali-mohan-varma.webp",
+          src: "/images/team/partner-murali-mohan-varma.webp",
           alt: "Mr. Dantuluri Murali Mohan Varma, Partner, Mythri Infra",
           fileName: "partner-murali-mohan-varma.webp",
         },

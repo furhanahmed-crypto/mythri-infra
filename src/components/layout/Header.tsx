@@ -50,7 +50,7 @@ export function Header() {
         className="bg-brand-gradient absolute inset-x-0 -bottom-px h-0.5 origin-left"
         style={{ scaleX: progress }}
       />
-      <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
+      <Container className="flex h-[4.25rem] items-center justify-between gap-4 lg:h-[4.75rem]">
         <Link href="/" aria-label="Mythri Infra — home" className="shrink-0 rounded-md">
           <Logo />
         </Link>

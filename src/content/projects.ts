@@ -10,9 +10,9 @@ export const projectsContent = {
   },
   header: {
     image: {
-      src: "/images/projects-hero.webp",
+      src: "/images/heroes/projects.webp",
       alt: "Completed internal road at Kakinada SEZ built by Mythri Infra",
-      fileName: "projects-hero.webp",
+      fileName: "projects.webp",
     },
     h1: "Our Projects",
     intro:
@@ -27,9 +27,9 @@ export const projectsContent = {
         p: "District Level Sand Committee, East Godavari · 2025. Manual excavation, transport, stocking and loading of sand at three open reaches.",
         category: "sand" as ProjectCategory,
         image: {
-          src: "/images/project-teeparru-sand-reach.webp",
+          src: "/images/projects/teeparru-sand-reach.webp",
           alt: "Sand excavation and stocking at Teeparru sand reach, East Godavari",
-          fileName: "project-teeparru-sand-reach.webp",
+          fileName: "teeparru-sand-reach.webp",
         },
       },
       {
@@ -37,9 +37,9 @@ export const projectsContent = {
         p: "Auro Infra Pvt Ltd, Kakinada · 2024. Construction of internal roads for Kakinada SEZ.",
         category: "roads" as ProjectCategory,
         image: {
-          src: "/images/project-kakinada-sez-roads.webp",
+          src: "/images/projects/kakinada-sez-roads.webp",
           alt: "Internal road construction at Kakinada SEZ by Mythri Infra",
-          fileName: "project-kakinada-sez-roads.webp",
+          fileName: "kakinada-sez-roads.webp",
         },
       },
       {
@@ -47,9 +47,9 @@ export const projectsContent = {
         p: "APSHCL, West Godavari · 2023. Filling of low-lying house sites.",
         category: "earthwork" as ProjectCategory,
         image: {
-          src: "/images/project-apshcl-tanuku.webp",
+          src: "/images/projects/apshcl-tanuku.webp",
           alt: "Low-lying house site filling at NPI housing layout, Tanuku",
-          fileName: "project-apshcl-tanuku.webp",
+          fileName: "apshcl-tanuku.webp",
         },
       },
       {
@@ -57,9 +57,9 @@ export const projectsContent = {
         p: "Larsen & Toubro · 2019 – present.",
         category: "earthwork" as ProjectCategory,
         image: {
-          src: "/images/project-ongc-kakinada.webp",
+          src: "/images/projects/ongc-kakinada.webp",
           alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
-          fileName: "project-ongc-kakinada.webp",
+          fileName: "ongc-kakinada.webp",
         },
       },
     ],

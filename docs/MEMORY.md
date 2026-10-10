@@ -36,8 +36,8 @@ Long-lived context for agents and humans. Update when decisions change.
 
 ## Design decisions locked (unless client overrides)
 
-- Light theme (default): white background, charcoal `#1F2328`, accent construction yellow `#E8A100`
-- Dark theme (added in v2 redesign at agency request): deep charcoal surfaces, same yellow accent; Light ↔ Dark click toggle (no System)
+- Light theme (default): white background, logo navy `#002858`, steel greys, warm amber/copper CTA accent
+- Dark theme: navy-ink surfaces, lifted amber accent; Light ↔ Dark click toggle (no System)
 - Type pairing (v3, agency request): **Bricolage Grotesque** headings + **Manrope** body
 - Gradients use `primary` → `primary-deep` (burnt amber) only; gradient text limited to one highlighted phrase per heading
 - UI built on shadcn/ui; motion via framer-motion with one shared "fluid" spring
@@ -62,7 +62,7 @@ Long-lived context for agents and humans. Update when decisions change.
 | 2020 NR Constructions / KPC Projects | Omitted until scope shared |
 | Pre-2016 project list | Label as **team experience**, not Mythri Infra firm projects |
 | Partner bios/photos | Placeholder until client delivers |
-| Logo + site photos | Temp free stock fills in `public/images/` (not ImagesBazaar); client photos still required |
+| Logo + site photos | Client logo in `public/images/brand/`; temp Commons photos in heroes/services/projects/fleet; client site photos still preferred |
 | Partner photos | Dummy AI portraits in place for layout; replace with client photos before go-live |
 
 ## Technical decisions
@@ -79,8 +79,8 @@ Long-lived context for agents and humans. Update when decisions change.
 - shadcn initialised with Radix base + Nova preset (`components.json`); the preset's Geist font was removed in favour of Manrope
 - shadcn colour variables replaced with brand OKLCH values for `:root` and `.dark`; extra tokens: `surface`, `inverse`, `inverse-foreground`, `whatsapp`
 - Added a local `xl` button size (h-11) for 44px tap targets; shadcn defaults are compact
-- Interim theme-aware `Logo` component in the header/footer until the client logo arrives
-- Team structure diagram rendered as HTML (theme-aware) instead of the static SVG; `public/images/team-structure.svg` kept as a fallback asset
+- `Logo` uses client mark (`images/brand/mythri-infra-mark.webp`) + navy wordmark; footer uses `onDark` light plate
+- Team structure diagram rendered as HTML (theme-aware); `images/diagrams/team-structure.svg` kept as fallback
 
 ## Lessons / pitfalls to avoid
 
@@ -106,6 +106,7 @@ Long-lived context for agents and humans. Update when decisions change.
 |------|----------|
 | 2026-10-10 | Docs scaffold created from Digi Carotene SEO handover PDF |
 | 2026-10-10 | Default visual system: charcoal + construction yellow pending brand confirmation |
+| 2026-10-10 | Client logo installed; palette → navy `#002858` + steel + amber/copper CTAs; images reorganised under `public/images/{brand,heroes,services,projects,fleet,team,diagrams,og}/` |
 | 2026-10-10 | Implemented full 6-page Next.js site + contact API; Manrope + placeholders until client assets |
 | 2026-10-10 | v2 redesign: shadcn/ui, light + dark themes (next-themes), framer-motion fluid animations; DESIGN.md rewritten |
 | 2026-10-10 | Filled placeholders with Wikimedia Commons earthwork photos (incl. Andhra Pradesh excavator). ImagesBazaar skipped (paid licence). Partner portraits stay empty. |

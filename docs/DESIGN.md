@@ -4,7 +4,7 @@ v2 introduced shadcn/ui, light + dark themes and Framer Motion "fluid" animation
 
 ## 1. Design direction
 
-**Modern, warm, construction-grade.** White (light) or deep charcoal (dark) surfaces, charcoal text, construction yellow `#E8A100` warming into a burnt-amber shade for gradients. Strong display type, real site photography, and contrast rhythm from dark bands (stats panel, "Why" band, closing CTA) between light sections.
+**Modern, warm, construction-grade.** White (light) or navy-ink (dark) surfaces, logo navy `#002858` text, steel greys from the mark, and a warm amber/copper CTA accent that complements the navy (earthwork niche — not logo-only). Strong display type, real site photography, and contrast rhythm from dark bands (stats panel, "Why" band, closing CTA) between light sections.
 
 Tone: capable, local, trustworthy — premium, but still a site office, not a SaaS landing page.
 
@@ -26,21 +26,22 @@ Tokens are shadcn CSS variables in `src/app/globals.css`, written in OKLCH and e
 
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `background` | `#FFFFFF` | `#0E1013` | Page |
-| `foreground` | `#1F2328` (charcoal) | `#ECEDEF` | Text |
-| `card` / `popover` | `#FFFFFF` | `#15181C` | Cards, menus, sheets |
-| `primary` | `#E8A100` | `#F0AE1E` (slightly lifted for contrast) | CTAs, active states, accents |
-| `primary-foreground` | charcoal | `#0E1013` | Text on yellow |
-| `primary-deep` | burnt amber | burnt amber (lifted) | Gradient end stop only (`bg-brand-gradient`, primary buttons) |
+| `background` | `#FFFFFF` | `#0A1628` (navy ink) | Page |
+| `foreground` | `#002858` (logo navy) | near-white | Text |
+| `brand-navy` / `brand-steel` | `#002858` / `#6B7378` | same (fixed) | Logo wordmark on light plates |
+| `card` / `popover` | `#FFFFFF` | lifted navy card | Cards, menus, sheets |
+| `primary` | `#D4941A` (warm amber) | `#E0A428` (lifted) | CTAs, active states, accents |
+| `primary-foreground` | deep navy | navy ink | Text on amber |
+| `primary-deep` | `#B86B1E` copper | copper (lifted) | Gradient end (`bg-brand-gradient`, primary buttons) |
 | `highlight-from` / `highlight-to` | darker ambers (≥ 3:1 on white) | bright ambers | `.text-gradient` heading highlights |
-| `secondary` / `muted` | `#F2F3F5` | `#1A1E22` / `#22262B` | Subtle fills, tab lists |
-| `muted-foreground` | `#5B6168` | `#9AA1A9` | Supporting copy |
-| `accent` | `#FBF3DF` (yellow tint) | `#2B2414` | Icon tiles, hover fills |
-| `border` / `input` | `#E5E7EB` | white 9% / 13% | Dividers, fields |
-| `ring` | yellow | yellow | Focus rings |
+| `secondary` / `muted` | cool chalk | navy muted | Subtle fills, tab lists |
+| `muted-foreground` | logo steel grey | light steel | Supporting copy |
+| `accent` | `#F4EEE4` warm sand | warm dark sand | Icon tiles, hover fills |
+| `border` / `input` | cool grey | white 10% / 14% | Dividers, fields |
+| `ring` | amber | amber | Focus rings |
 | `destructive` | `#B42318` | `#F04438` | Form errors |
-| `surface` | `#F7F8F9` | `#121417` | Alternating section bands |
-| `inverse` / `inverse-foreground` | deep black (matches dark `background`) / light | deeper black / light | Legacy inverse token; footer uses forced `dark` + `bg-background` |
+| `surface` | cool chalk | navy surface | Alternating section bands |
+| `inverse` / `inverse-foreground` | navy ink / light | deeper navy / light | Legacy inverse; footer uses forced `dark` + `bg-background` |
 | `whatsapp` | `#25D366` | slightly darker | Floating WhatsApp only |
 
 Radius: `--radius: 0.625rem`. Buttons and inputs use `rounded-lg`, cards `rounded-xl`, large panels `rounded-2xl`/`rounded-3xl`. No pill CTAs except the circular WhatsApp button.
@@ -55,7 +56,7 @@ Radius: `--radius: 0.625rem`. Buttons and inputs use `rounded-lg`, cards `rounde
 
 ### Logo
 
-Interim theme-aware wordmark (`Logo` component: yellow mark + "Mythri Infra"). Replace with the client's final logo when delivered. `public/mythri-infra-logo.svg` stays as the schema/OG logo.
+Client logo in `public/images/brand/`. Header/footer use `mythri-infra-mark.webp` + navy/"Infra" wordmark (`Logo`). Footer passes `onDark` (white plate). Schema/OG: `mythri-infra-logo.webp`.
 
 ## 3. Typography
 
@@ -179,7 +180,7 @@ Mobile-first. Breakpoints: `sm 640`, `md 768`, `lg 1024` (desktop nav appears), 
 
 ## 9. Accessibility
 
-- AA contrast in both themes (charcoal on yellow for primary buttons)
+- AA contrast in both themes (navy on amber for primary buttons)
 - Visible focus rings (`ring` = yellow)
 - Skip-to-content link
 - Form: labels, `aria-invalid`, `aria-describedby` → error text with `role="alert"`, focus moves to first invalid field

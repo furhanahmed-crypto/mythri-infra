@@ -1,42 +1,58 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * Interim wordmark that adapts to light/dark. Replace with the client's
- * final `mythri-infra-logo.svg` once delivered (TASKS.md Phase 4).
+ * Brand mark + wordmark from the client logo.
+ * `onDark` — mark on the dark band with light wordmark (no white plate).
  */
 export function Logo({
   className,
-  inverse = false,
+  onDark = false,
 }: {
   className?: string;
-  inverse?: boolean;
+  onDark?: boolean;
 }) {
   return (
     <span className={cn("group/logo inline-flex items-center gap-2.5", className)}>
-      <span
-        aria-hidden="true"
-        className="bg-brand-gradient relative flex size-8 items-end justify-center gap-[3px] overflow-hidden rounded-lg p-1.5 shadow-md shadow-primary/30 transition-transform duration-500 group-hover/logo:-rotate-6"
-      >
-        <span className="h-2 w-1 rounded-[1px] bg-primary-foreground/90 transition-[height] duration-300 group-hover/logo:h-4" />
-        <span className="h-3.5 w-1 rounded-[1px] bg-primary-foreground/90 transition-[height] delay-75 duration-300 group-hover/logo:h-2.5" />
-        <span className="h-5 w-1 rounded-[1px] bg-primary-foreground/90 transition-[height] delay-150 duration-300 group-hover/logo:h-3.5" />
-      </span>
-      <span
+      <Image
+        src="/images/brand/mythri-infra-mark.webp"
+        alt=""
+        width={160}
+        height={120}
+        priority={!onDark}
         className={cn(
-          "font-heading text-[1.15rem] leading-none font-extrabold tracking-tight",
-          inverse ? "text-inverse-foreground" : "text-foreground",
+          "h-9 w-auto transition-transform duration-500 group-hover/logo:-rotate-3 md:h-10",
+          onDark && "rounded-sm bg-white/95 p-1 shadow-sm",
         )}
-      >
-        Mythri{" "}
+        aria-hidden="true"
+      />
+      <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-semibold",
-            inverse ? "text-inverse-foreground/60" : "text-muted-foreground",
+            "font-heading text-[1.05rem] font-extrabold tracking-[0.04em] uppercase md:text-[1.15rem]",
+            onDark ? "text-white" : "text-foreground",
           )}
         >
+          Mythri
+        </span>
+        <span
+          className={cn(
+            "mt-0.5 flex items-center gap-1.5 text-[0.62rem] font-semibold tracking-[0.28em] uppercase",
+            onDark ? "text-white/65" : "text-muted-foreground",
+          )}
+        >
+          <span
+            className={cn("h-px w-2.5", onDark ? "bg-white/40" : "bg-muted-foreground/50")}
+            aria-hidden="true"
+          />
           Infra
+          <span
+            className={cn("h-px w-2.5", onDark ? "bg-white/40" : "bg-muted-foreground/50")}
+            aria-hidden="true"
+          />
         </span>
       </span>
+      <span className="sr-only">Mythri Infra</span>
     </span>
   );
 }

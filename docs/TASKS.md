@@ -115,7 +115,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done · `[-]` blocked / deferre
 
 ## Phase 4 — Assets & client confirmations
 
-- [ ] Replace logo with final SVG/PNG
+- [x] Replace logo with client SVG/JPG (`public/images/brand/`) + navy/amber palette refresh
 - [x] Temporary construction photos filled (Wikimedia Commons WebP; hero is Andhra Pradesh excavator) — **replace with Mythri / ImagesBazaar-licensed photos before go-live**
 - [x] Partner photo slots filled with temporary AI dummy portraits (layout only)
 - [ ] Replace partner dummies + add bios with client-supplied assets before go-live

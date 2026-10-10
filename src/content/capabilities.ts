@@ -8,9 +8,9 @@ export const capabilitiesContent = {
   },
   header: {
     image: {
-      src: "/images/capabilities-hero-fleet.webp",
+      src: "/images/heroes/capabilities-fleet.webp",
       alt: "Mythri Infra fleet of dumpers and excavators parked at the yard",
-      fileName: "capabilities-hero-fleet.webp",
+      fileName: "capabilities-fleet.webp",
     },
     h1: "Our Fleet, Team & Process",
     intro:
@@ -24,73 +24,73 @@ export const capabilitiesContent = {
       {
         h3: "Dumpers — 25",
         image: {
-          src: "/images/fleet-dumper.webp",
+          src: "/images/fleet/dumper.webp",
           alt: "Mythri Infra dumper truck",
-          fileName: "fleet-dumper.webp",
+          fileName: "dumper.webp",
         },
       },
       {
         h3: "Kobelco 220 Excavator — 3",
         image: {
-          src: "/images/fleet-kobelco-220.webp",
+          src: "/images/fleet/kobelco-220.webp",
           alt: "Kobelco 220 excavator owned by Mythri Infra",
-          fileName: "fleet-kobelco-220.webp",
+          fileName: "kobelco-220.webp",
         },
       },
       {
         h3: "EX 200 Excavator — 3",
         image: {
-          src: "/images/fleet-ex-200.webp",
+          src: "/images/fleet/ex-200.webp",
           alt: "EX 200 excavator at work on site",
-          fileName: "fleet-ex-200.webp",
+          fileName: "ex-200.webp",
         },
       },
       {
         h3: "ZX 470 Excavator — 2",
         image: {
-          src: "/images/fleet-zx-470.webp",
+          src: "/images/fleet/zx-470.webp",
           alt: "ZX 470 heavy excavator for mining and bulk earthwork",
-          fileName: "fleet-zx-470.webp",
+          fileName: "zx-470.webp",
         },
       },
       {
         h3: "Motor Grader — 2",
         image: {
-          src: "/images/fleet-grader.webp",
+          src: "/images/fleet/grader.webp",
           alt: "Motor grader levelling a road base",
-          fileName: "fleet-grader.webp",
+          fileName: "grader.webp",
         },
       },
       {
         h3: "Roller — 2",
         image: {
-          src: "/images/fleet-roller.webp",
+          src: "/images/fleet/roller.webp",
           alt: "Road roller compacting a sub-grade",
-          fileName: "fleet-roller.webp",
+          fileName: "roller.webp",
         },
       },
       {
         h3: "Blade Tractor — 2",
         image: {
-          src: "/images/fleet-blade-tractor.webp",
+          src: "/images/fleet/blade-tractor.webp",
           alt: "Blade tractor used for site levelling",
-          fileName: "fleet-blade-tractor.webp",
+          fileName: "blade-tractor.webp",
         },
       },
       {
         h3: "Water Tanker — 2",
         image: {
-          src: "/images/fleet-water-tanker.webp",
+          src: "/images/fleet/water-tanker.webp",
           alt: "Water tanker for compaction and dust control",
-          fileName: "fleet-water-tanker.webp",
+          fileName: "water-tanker.webp",
         },
       },
       {
         h3: "Drilling Machine — 1",
         image: {
-          src: "/images/fleet-drilling-machine.webp",
+          src: "/images/fleet/drilling-machine.webp",
           alt: "Drilling machine on a project site",
-          fileName: "fleet-drilling-machine.webp",
+          fileName: "drilling-machine.webp",
         },
       },
     ],
@@ -99,7 +99,7 @@ export const capabilitiesContent = {
     h2: "Our Team",
     p: "30 construction staff and 200 skilled workmen. Each site runs with a Project Manager and a Project Accountant, reporting to the Managing Partner at head office.",
     diagram: {
-      src: "/images/team-structure.svg",
+      src: "/images/diagrams/team-structure.svg",
       alt: "Mythri Infra project hierarchy: Managing Partner, Project Manager and Project Accountant, site teams",
       fileName: "team-structure.svg",
     },

@@ -20,7 +20,7 @@ export function Footer() {
       <div className="aurora pointer-events-none absolute inset-0 -z-0 opacity-25" aria-hidden="true" />
       <Container className="relative grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-12 lg:py-20">
         <div className="relative space-y-5 lg:col-span-4">
-          <Logo />
+          <Logo onDark />
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             {siteConfig.tagline}
           </p>

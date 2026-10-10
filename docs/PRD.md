@@ -123,7 +123,7 @@ This PRD summarizes product intent. When copy conflicts with implementation draf
 6. NR Constructions & KPC Projects details or drop approval
 7. Optional certificates / appreciation letters
 8. Domain name + domain email
-9. Brand colour approval (default: charcoal + construction yellow)
+9. Brand colour approval (logo navy `#002858` + amber/copper CTAs — refine with client if needed)
 
 ## 10. Key business facts (for accurate UI copy)
 

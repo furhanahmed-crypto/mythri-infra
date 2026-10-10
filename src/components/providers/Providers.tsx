@@ -10,6 +10,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       attribute="class"
       defaultTheme="light"
       enableSystem={false}
+      themes={["light", "dark"]}
+      storageKey="mythri-theme"
       disableTransitionOnChange
     >
       <MotionConfig reducedMotion="user">

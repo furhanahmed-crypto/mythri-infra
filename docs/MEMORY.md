@@ -37,7 +37,8 @@ Long-lived context for agents and humans. Update when decisions change.
 ## Design decisions locked (unless client overrides)
 
 - Light theme (default): white background, logo navy `#002858`, steel greys, warm amber/copper CTA accent
-- Dark theme: navy-ink surfaces, lifted amber accent; Light ↔ Dark click toggle (no System)
+- Default theme is always **light** (`defaultTheme="light"`, `enableSystem={false}`); users opt into dark via toggle
+- Dark theme only: pure black surfaces (no blue cast); light `:root` tokens stay navy + amber
 - Type pairing (v3, agency request): **Bricolage Grotesque** headings + **Manrope** body
 - Gradients use `primary` → `primary-deep` (burnt amber) only; gradient text limited to one highlighted phrase per heading
 - UI built on shadcn/ui; motion via framer-motion with one shared "fluid" spring

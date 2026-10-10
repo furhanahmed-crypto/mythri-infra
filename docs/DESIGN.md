@@ -4,7 +4,7 @@ v2 introduced shadcn/ui, light + dark themes and Framer Motion "fluid" animation
 
 ## 1. Design direction
 
-**Modern, warm, construction-grade.** White (light) or navy-ink (dark) surfaces, logo navy `#002858` text, steel greys from the mark, and a warm amber/copper CTA accent that complements the navy (earthwork niche — not logo-only). Strong display type, real site photography, and contrast rhythm from dark bands (stats panel, "Why" band, closing CTA) between light sections.
+**Modern, warm, construction-grade.** White (light) or pure black (dark) surfaces, logo navy `#002858` text, steel greys from the mark, and a warm amber/copper CTA accent that complements the navy (earthwork niche — not logo-only). Strong display type, real site photography, and contrast rhythm from black bands (stats panel, "Why" band, closing CTA) between light sections.
 
 Tone: capable, local, trustworthy — premium, but still a site office, not a SaaS landing page.
 
@@ -26,12 +26,12 @@ Tokens are shadcn CSS variables in `src/app/globals.css`, written in OKLCH and e
 
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `background` | `#FFFFFF` | `#0A1628` (navy ink) | Page |
+| `background` | `#FFFFFF` | `#000000` pure black (dark only) | Page |
 | `foreground` | `#002858` (logo navy) | near-white | Text |
 | `brand-navy` / `brand-steel` | `#002858` / `#6B7378` | same (fixed) | Logo wordmark on light plates |
-| `card` / `popover` | `#FFFFFF` | lifted navy card | Cards, menus, sheets |
+| `card` / `popover` | `#FFFFFF` | near-black `#242424` | Cards, menus, sheets |
 | `primary` | `#D4941A` (warm amber) | `#E0A428` (lifted) | CTAs, active states, accents |
-| `primary-foreground` | deep navy | navy ink | Text on amber |
+| `primary-foreground` | deep navy | near-black | Text on amber |
 | `primary-deep` | `#B86B1E` copper | copper (lifted) | Gradient end (`bg-brand-gradient`, primary buttons) |
 | `highlight-from` / `highlight-to` | darker ambers (≥ 3:1 on white) | bright ambers | `.text-gradient` heading highlights |
 | `secondary` / `muted` | cool chalk | navy muted | Subtle fills, tab lists |
@@ -40,16 +40,16 @@ Tokens are shadcn CSS variables in `src/app/globals.css`, written in OKLCH and e
 | `border` / `input` | cool grey | white 10% / 14% | Dividers, fields |
 | `ring` | amber | amber | Focus rings |
 | `destructive` | `#B42318` | `#F04438` | Form errors |
-| `surface` | cool chalk | navy surface | Alternating section bands |
-| `inverse` / `inverse-foreground` | navy ink / light | deeper navy / light | Legacy inverse; footer uses forced `dark` + `bg-background` |
+| `surface` | cool chalk | near-black | Alternating section bands |
+| `inverse` / `inverse-foreground` | pure black / light | pure black / light | Legacy inverse; footer uses forced `dark` + `bg-background` |
 | `whatsapp` | `#25D366` | slightly darker | Floating WhatsApp only |
 
 Radius: `--radius: 0.625rem`. Buttons and inputs use `rounded-lg`, cards `rounded-xl`, large panels `rounded-2xl`/`rounded-3xl`. No pill CTAs except the circular WhatsApp button.
 
 ### Theme behaviour
 
-- `next-themes` with `attribute="class"`, **default light** (matches the handover); System preference disabled
-- Toggle: `ThemeToggle` icon button in the header — one click flips Light ↔ Dark
+- `next-themes` with `attribute="class"`, **default light** for every first visit; System preference disabled so OS dark mode never auto-applies
+- Toggle: `ThemeToggle` icon button in the header — opt-in dark only; one click flips Light ↔ Dark
 - `<html suppressHydrationWarning>`; `disableTransitionOnChange` to avoid colour flashes
 - Embedded Google Map is colour-inverted in dark mode so it doesn't glare
 - `viewport.themeColor` set for both schemes

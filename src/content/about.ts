@@ -9,7 +9,7 @@ export const aboutContent = {
   header: {
     image: {
       src: "/images/heroes/about-team.webp",
-      alt: "Mythri Infra site team at a road construction project in Andhra Pradesh",
+      alt: "Construction site with cranes and active infrastructure works",
       fileName: "about-team.webp",
     },
     h1: "About Mythri Infra",

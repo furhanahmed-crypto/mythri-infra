@@ -8,9 +8,9 @@ export const homeContent = {
   },
   hero: {
     image: {
-      src: "/images/projects/ongc-kakinada.webp",
-      alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
-      fileName: "ongc-kakinada.webp",
+      src: "/images/heroes/home.webp",
+      alt: "Heavy excavators at work on a large earthwork and infrastructure site",
+      fileName: "home.webp",
     },
     featured: {
       label: "Featured project",
@@ -100,7 +100,7 @@ export const homeContent = {
         p: "Auro Infra Pvt Ltd · 2024",
         image: {
           src: "/images/projects/kakinada-sez-roads.webp",
-          alt: "Internal road construction at Kakinada SEZ by Mythri Infra",
+          alt: "Asphalt paver on a road construction project",
           fileName: "kakinada-sez-roads.webp",
         },
       },
@@ -109,7 +109,7 @@ export const homeContent = {
         p: "District Level Sand Committee · 2025",
         image: {
           src: "/images/projects/teeparru-sand-reach.webp",
-          alt: "Sand excavation and stocking at Teeparru sand reach, East Godavari",
+          alt: "Sand and gravel quarry representing sand excavation works",
           fileName: "teeparru-sand-reach.webp",
         },
       },
@@ -118,7 +118,7 @@ export const homeContent = {
         p: "Larsen & Toubro · 2019 – present",
         image: {
           src: "/images/projects/ongc-kakinada.webp",
-          alt: "Earthwork for ONGC project in Kakinada executed for Larsen & Toubro",
+          alt: "Heavy machinery on an industrial earthwork project site",
           fileName: "ongc-kakinada.webp",
         },
       },

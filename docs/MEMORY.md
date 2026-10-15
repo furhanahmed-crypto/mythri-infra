@@ -63,7 +63,7 @@ Long-lived context for agents and humans. Update when decisions change.
 | 2020 NR Constructions / KPC Projects | Omitted until scope shared |
 | Pre-2016 project list | Label as **team experience**, not Mythri Infra firm projects |
 | Partner bios/photos | Placeholder until client delivers |
-| Logo + site photos | Client logo in `public/images/brand/`; temp Commons photos in heroes/services/projects/fleet; client site photos still preferred |
+| Logo + site photos | Client logo in `public/images/brand/`; temp Unsplash + Commons WebPs in heroes/services/projects/fleet (ImagesBazaar not scraped); client photos still preferred for go-live |
 | Partner photos | Dummy AI portraits in place for layout; replace with client photos before go-live |
 
 ## Technical decisions

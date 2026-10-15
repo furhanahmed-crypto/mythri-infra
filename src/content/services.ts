@@ -9,7 +9,7 @@ export const servicesContent = {
   header: {
     image: {
       src: "/images/heroes/services.webp",
-      alt: "Excavator loading a dumper during earthwork by Mythri Infra",
+      alt: "Excavator at work on an earthwork and infrastructure site",
       fileName: "services.webp",
     },
     h1: "Our Services",
@@ -21,7 +21,7 @@ export const servicesContent = {
       h2: "Earthwork & Site Development",
       image: {
         src: "/images/services/earthwork.webp",
-        alt: "Soil filling and land levelling at Kakinada SEZ by Mythri Infra",
+        alt: "Excavator cutting and moving earth on a large site development job",
         fileName: "earthwork.webp",
       },
       paragraphs: [
@@ -33,7 +33,7 @@ export const servicesContent = {
       h2: "Road Construction",
       image: {
         src: "/images/services/road-construction.webp",
-        alt: "Internal road under construction with grader and roller, Kakinada",
+        alt: "Asphalt paver laying a new road surface during highway construction",
         fileName: "road-construction.webp",
       },
       paragraphs: [
@@ -45,7 +45,7 @@ export const servicesContent = {
       h2: "Drainage Works",
       image: {
         src: "/images/services/drainage.webp",
-        alt: "Site drain excavation work at an industrial site in Kakinada",
+        alt: "Large drainage pipe being installed on a construction site",
         fileName: "drainage.webp",
       },
       paragraphs: [
@@ -57,7 +57,7 @@ export const servicesContent = {
       h2: "Sand Excavation & Supply",
       image: {
         src: "/images/services/sand-supply.webp",
-        alt: "Sand excavation and loading at an open sand reach in East Godavari",
+        alt: "Aerial view of a sand and gravel quarry with excavation works",
         fileName: "sand-supply.webp",
       },
       paragraphs: [
@@ -69,7 +69,7 @@ export const servicesContent = {
       h2: "Mining Support Works",
       image: {
         src: "/images/services/mining-support.webp",
-        alt: "Heavy excavator and dumpers at a coal mining site",
+        alt: "Aerial view of heavy excavators and haul trucks on a mining site",
         fileName: "mining-support.webp",
       },
       paragraphs: [

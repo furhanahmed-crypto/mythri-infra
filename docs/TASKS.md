@@ -111,6 +111,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done · `[-]` blocked / deferre
 - [x] Email delivery to client inboxes (Resend when configured; console log in local/dev)
 - [x] Honeypot (+ reCAPTCHA v3 if keys available)
 - [x] GA4: `click_to_call`, `whatsapp_click`, `generate_lead` (fires when measurement ID set)
+- [ ] **Static export gap:** `out/` has no `/api/contact` — wire form to a serverless/Node endpoint (or drop `output: "export"` for a Node host)
 - [-] Wire production domain redirects (https + www policy) — configure on host/DNS at deploy
 
 ## Phase 4 — Assets & client confirmations

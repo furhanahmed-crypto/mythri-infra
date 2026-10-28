@@ -26,9 +26,11 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-npm run build
-npm start
+npm run build   # writes static site to out/
+npm start       # serves out/ on :3000 (not next start)
 ```
+
+Static export does **not** include `POST /api/contact`. For production enquiries, host that route on a Node/serverless endpoint (or switch off `output: "export"` and deploy to a Node host).
 
 ## Environment
 

@@ -14,8 +14,8 @@ A mostly static, SEO-first marketing site with one dynamic surface: the contact 
 | Theming | `next-themes` (class strategy, default light) | Light ↔ Dark click toggle without hydration flash |
 | Motion | `framer-motion` | Spring "fluid" reveals, layout animations, scroll-linked timeline |
 | Icons | `lucide-react` | Decorative, `aria-hidden` |
-| Hosting | Vercel (or equivalent Node-capable host) | Edge CDN, HTTPS, env secrets |
-| Forms | Next.js Route Handler → email provider | Resend / Nodemailer / SES |
+| Hosting | Static `out/` (CDN / any static host) + separate form endpoint, **or** Node host without `output: "export"` | Static pages are SEO-friendly; form needs a server |
+| Forms | Route Handler → Resend (Node host) **or** external serverless URL when statically exported | Resend / Nodemailer / SES |
 | Analytics | GA4 via `@next/third-parties` or gtag | Call / WhatsApp / form events |
 | Spam | Honeypot + optional reCAPTCHA v3 | Required by PRD |
 | Images | `next/image` + WebP assets in `/public` | Size, lazy-load, CLS control |
@@ -169,7 +169,7 @@ Pages are Server Components (static). Client components are limited to: header/n
 6. **Placeholder strategy** — until client assets arrive, use labeled placeholders that never ship stock skyscraper imagery.
 7. **shadcn/ui as the component layer** — generated into the repo (not a dependency), themed only through CSS variables in `globals.css`.
 8. **CSS entrance for above-the-fold, Framer Motion below** — hero/page-header text animates with `tw-animate-css` so it paints before hydration; in-view reveals use Framer.
-9. **Cache Components is on** (`next.config.ts`) — avoid `new Date()`/random values during prerender and route-segment `runtime` exports.
+9. **`output: "export"`** writes `out/` — `images.unoptimized` required; robots/sitemap use `dynamic = "force-static"`. Cache Components / partialPrefetching are **off** (they forbid that segment config). Contact `POST` is not part of the static export.
 
 ## 10. Environments
 

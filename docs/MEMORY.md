@@ -69,6 +69,7 @@ Long-lived context for agents and humans. Update when decisions change.
 ## Technical decisions
 
 - Stack: Next.js 16 App Router + TypeScript + Tailwind v4 (see ARCHITECTURE.md)
+- **Static export:** `output: "export"` → `out/` after `next build`; `images.unoptimized: true`; serve with `npm start` (`serve out`). Cache Components disabled because it conflicts with `force-static` required by export on robots/sitemap. **`/api/contact` is omitted from `out/`** — form needs a Node/serverless host or drop `output: "export"`.
 - Fonts: Bricolage Grotesque (`--font-display` → `font-heading`) + Manrope (`--font-sans`)
 - No database / no CMS in v1
 - Form → Resend email when `RESEND_API_KEY` set; otherwise logs in non-production
@@ -105,6 +106,7 @@ Long-lived context for agents and humans. Update when decisions change.
 
 | Date | Decision |
 |------|----------|
+| 2026-10-28 | Enabled `output: "export"` → `out/`; turned off cacheComponents/partialPrefetching; form API not in static export |
 | 2026-10-10 | Docs scaffold created from Digi Carotene SEO handover PDF |
 | 2026-10-10 | Default visual system: charcoal + construction yellow pending brand confirmation |
 | 2026-10-10 | Client logo installed; palette → navy `#002858` + steel + amber/copper CTAs; images reorganised under `public/images/{brand,heroes,services,projects,fleet,team,diagrams,og}/` |

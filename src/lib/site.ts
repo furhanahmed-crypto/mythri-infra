@@ -17,12 +17,6 @@ export const siteConfig = {
   phone: {
     primaryDisplay: "99669 76799",
     primaryTel: "+919966976799",
-    secondaryDisplay: "99488 76799",
-    secondaryTel: "+919948876799",
-    officeDisplay: "95736 50799",
-    officeTel: "+919573650799",
-    partnerMuraliDisplay: "99491 79524",
-    partnerMuraliTel: "+919949179524",
   },
   whatsappUrl: "https://wa.me/919966976799",
   addresses: {

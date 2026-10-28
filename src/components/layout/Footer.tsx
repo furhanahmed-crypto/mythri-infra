@@ -66,22 +66,9 @@ export function Footer() {
           </p>
           <p className="flex gap-3">
             <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-            <span className="flex flex-wrap gap-x-2 gap-y-1">
-              <TrackedLink href={`tel:${siteConfig.phone.primaryTel}`} event="click_to_call" className={linkClass}>
-                {siteConfig.phone.primaryDisplay}
-              </TrackedLink>
-              <span className="text-foreground/30" aria-hidden="true">·</span>
-              <TrackedLink href={`tel:${siteConfig.phone.secondaryTel}`} event="click_to_call" className={linkClass}>
-                {siteConfig.phone.secondaryDisplay}
-              </TrackedLink>
-              <span className="text-foreground/30" aria-hidden="true">·</span>
-              <span className="text-muted-foreground">
-                Office:{" "}
-                <TrackedLink href={`tel:${siteConfig.phone.officeTel}`} event="click_to_call" className={linkClass}>
-                  {siteConfig.phone.officeDisplay}
-                </TrackedLink>
-              </span>
-            </span>
+            <TrackedLink href={`tel:${siteConfig.phone.primaryTel}`} event="click_to_call" className={linkClass}>
+              {siteConfig.phone.primaryDisplay}
+            </TrackedLink>
           </p>
           <p className="flex gap-3">
             <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />

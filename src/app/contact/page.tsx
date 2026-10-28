@@ -79,30 +79,11 @@ export default function ContactPage() {
                   <IconTile icon={Phone} />
                   <div className="min-w-0">
                     <h3 className="text-base!">Phone</h3>
-                    <div className="mt-1 space-y-1.5 text-sm text-muted-foreground">
-                      <p>
-                        Mr. D. Raja Gopal Raju (Managing Partner):{" "}
-                        <TrackedLink href={`tel:${phone.primaryTel}`} event="click_to_call" className={telLink}>
-                          {phone.primaryDisplay}
-                        </TrackedLink>
-                        {" · "}
-                        <TrackedLink href={`tel:${phone.secondaryTel}`} event="click_to_call" className={telLink}>
-                          {phone.secondaryDisplay}
-                        </TrackedLink>
-                      </p>
-                      <p>
-                        Mr. D. Murali Mohan Varma (Partner):{" "}
-                        <TrackedLink href={`tel:${phone.partnerMuraliTel}`} event="click_to_call" className={telLink}>
-                          {phone.partnerMuraliDisplay}
-                        </TrackedLink>
-                      </p>
-                      <p>
-                        Office:{" "}
-                        <TrackedLink href={`tel:${phone.officeTel}`} event="click_to_call" className={telLink}>
-                          {phone.officeDisplay}
-                        </TrackedLink>
-                      </p>
-                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      <TrackedLink href={`tel:${phone.primaryTel}`} event="click_to_call" className={telLink}>
+                        {phone.primaryDisplay}
+                      </TrackedLink>
+                    </p>
                   </div>
                 </Card>
               </StaggerItem>

@@ -23,9 +23,9 @@ Long-lived context for agents and humans. Update when decisions change.
 
 ## Leadership
 
-- Managing Partner: Mr. Dantuluri Raja Gopal Raju — 99669 76799 · 99488 76799
-- Partner: Mr. Dantuluri Murali Mohan Varma — 99491 79524
-- Office: 95736 50799
+- Managing Partner: Mr. Dantuluri Raja Gopal Raju
+- Partner: Mr. Dantuluri Murali Mohan Varma
+- Phone (site-wide): 99669 76799
 - Bios (2–3 lines) pending from client
 
 ## Contact channels
@@ -107,6 +107,7 @@ Long-lived context for agents and humans. Update when decisions change.
 
 | Date | Decision |
 |------|----------|
+| 2026-10-28 | Single site phone 99669 76799 — removed secondary / office / partner lines from UI |
 | 2026-10-28 | Primary / WhatsApp CTA updated to 99669 76799 (`+919966976799`) |
 | 2026-10-28 | Square brand mark + favicon.ico / icon.png / apple-icon derived for header + browser tab |
 | 2026-10-28 | Enabled `output: "export"` → `out/`; turned off cacheComponents/partialPrefetching; form API not in static export |

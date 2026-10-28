@@ -78,6 +78,6 @@ Photo slots use labeled placeholders until real site images arrive. Trusted-by l
 
 ## Business contact
 
-- Phone: 99669 76799 · 99488 76799 · Office 95736 50799
+- Phone: 99669 76799
 - Email: mythriinfraa@gmail.com
 - Head office: Turangi, Kakinada – 533016

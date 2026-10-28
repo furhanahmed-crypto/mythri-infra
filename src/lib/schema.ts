@@ -52,12 +52,6 @@ export function generalContractorSchema() {
         areaServed: "IN",
         availableLanguage: ["English", "Telugu"],
       },
-      {
-        "@type": "ContactPoint",
-        telephone: siteConfig.phone.officeTel,
-        contactType: "customer service",
-        areaServed: "IN",
-      },
     ],
   };
 }

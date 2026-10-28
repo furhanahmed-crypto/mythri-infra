@@ -22,8 +22,8 @@ export const homeContent = {
       "Earthwork, roads, drainage and sand supply across Andhra Pradesh, delivered on time with our own fleet. Trusted by L&T, NCC and government bodies.",
     primaryCta: { label: "View Our Projects", href: "/projects" },
     secondaryCta: {
-      label: "Call 79939 49799",
-      href: "tel:+917993949799",
+      label: "Call 99669 76799",
+      href: "tel:+919966976799",
       track: "click_to_call" as const,
     },
   },

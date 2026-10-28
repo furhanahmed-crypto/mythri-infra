@@ -32,7 +32,7 @@ export function generalContractorSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     logo: absoluteUrl(siteConfig.logoPath),
-    telephone: "+91-7993949799",
+    telephone: "+91-9966976799",
     email: siteConfig.email.primary,
     foundingDate: siteConfig.foundingDate,
     areaServed: siteConfig.areaServed,

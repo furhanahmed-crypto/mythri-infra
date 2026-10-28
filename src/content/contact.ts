@@ -2,7 +2,7 @@ export const contactContent = {
   seo: {
     title: "Contact Mythri Infra | Earthwork Contractors, Kakinada",
     description:
-      "Call 79939 49799 or visit our offices in Turangi and R.R. Nagar, Kakinada. Send your project scope or BOQ for a quote within one working day.",
+      "Call 99669 76799 or visit our offices in Turangi and R.R. Nagar, Kakinada. Send your project scope or BOQ for a quote within one working day.",
     keywords:
       "Mythri Infra contact, Mythri Infra Kakinada, earthwork contractors Kakinada phone number, civil contractors Turangi Kakinada, road contractors near Kakinada",
   },

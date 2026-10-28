@@ -130,7 +130,7 @@ This PRD summarizes product intent. When copy conflicts with implementation draf
 - Partnership firm, est. 2016 · GSTIN: `37ABDFM4972H1ZZ`
 - Head office: D.No. 6-222, Near Bhaskara Kalyana Mandapam, Opp. HP Bunk, Turangi, Kakinada – 533016
 - Branch: Road No. 3, R.R. Nagar, NFCL Road, Kakinada – 533003
-- Phones: 79939 49799 · 99488 76799 · Office 95736 50799 · Partner (Murali) 99491 79524
+- Phones: 99669 76799 · 99488 76799 · Office 95736 50799 · Partner (Murali) 99491 79524
 - Emails: mythriinfraa@gmail.com · mythriinfraa1@gmail.com
 - Stats: 20+ years experience · 40+ owned machines · 25 dumpers · 230+ staff & workmen
 - Managing Partner: Mr. Dantuluri Raja Gopal Raju · Partner: Mr. Dantuluri Murali Mohan Varma

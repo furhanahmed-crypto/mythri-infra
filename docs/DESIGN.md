@@ -56,7 +56,7 @@ Radius: `--radius: 0.625rem`. Buttons and inputs use `rounded-lg`, cards `rounde
 
 ### Logo
 
-Client logo in `public/images/brand/`. Header/footer use `mythri-infra-mark.webp` + navy/"Infra" wordmark (`Logo`). Footer passes `onDark` (white plate). Schema/OG: `mythri-infra-logo.webp`.
+Client logo in `public/images/brand/`. Header/footer use square `mythri-infra-mark.webp` + navy/"Infra" wordmark (`Logo`). Favicon / apple touch icons in `src/app/` are derived from the same mark. Footer passes `onDark` (white plate). Schema/OG: `mythri-infra-logo.webp`.
 
 ## 3. Typography
 

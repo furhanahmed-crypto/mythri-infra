@@ -23,14 +23,14 @@ Long-lived context for agents and humans. Update when decisions change.
 
 ## Leadership
 
-- Managing Partner: Mr. Dantuluri Raja Gopal Raju — 79939 49799 · 99488 76799
+- Managing Partner: Mr. Dantuluri Raja Gopal Raju — 99669 76799 · 99488 76799
 - Partner: Mr. Dantuluri Murali Mohan Varma — 99491 79524
 - Office: 95736 50799
 - Bios (2–3 lines) pending from client
 
 ## Contact channels
 
-- WhatsApp / primary mobile CTA: `+91 79939 49799` → `tel:+917993949799`, `https://wa.me/917993949799`
+- WhatsApp / primary mobile CTA: `+91 99669 76799` → `tel:+919966976799`, `https://wa.me/919966976799`
 - Emails (until domain email): mythriinfraa@gmail.com · mythriinfraa1@gmail.com
 - Head office Turangi 533016; Branch R.R. Nagar / NFCL Road 533003
 
@@ -70,6 +70,7 @@ Long-lived context for agents and humans. Update when decisions change.
 
 - Stack: Next.js 16 App Router + TypeScript + Tailwind v4 (see ARCHITECTURE.md)
 - **Static export:** `output: "export"` → `out/` after `next build`; `images.unoptimized: true`; serve with `npm start` (`serve out`). Cache Components disabled because it conflicts with `force-static` required by export on robots/sitemap. **`/api/contact` is omitted from `out/`** — form needs a Node/serverless host or drop `output: "export"`.
+- **Brand mark:** square `mythri-infra-mark.webp` (1024) used in `Logo`; favicon from same art via `src/app/favicon.ico` + `icon.png` + `apple-icon.png`. Legacy landscape mark kept as `mythri-infra-mark.legacy.webp`.
 - Fonts: Bricolage Grotesque (`--font-display` → `font-heading`) + Manrope (`--font-sans`)
 - No database / no CMS in v1
 - Form → Resend email when `RESEND_API_KEY` set; otherwise logs in non-production
@@ -106,6 +107,8 @@ Long-lived context for agents and humans. Update when decisions change.
 
 | Date | Decision |
 |------|----------|
+| 2026-10-28 | Primary / WhatsApp CTA updated to 99669 76799 (`+919966976799`) |
+| 2026-10-28 | Square brand mark + favicon.ico / icon.png / apple-icon derived for header + browser tab |
 | 2026-10-28 | Enabled `output: "export"` → `out/`; turned off cacheComponents/partialPrefetching; form API not in static export |
 | 2026-10-10 | Docs scaffold created from Digi Carotene SEO handover PDF |
 | 2026-10-10 | Default visual system: charcoal + construction yellow pending brand confirmation |

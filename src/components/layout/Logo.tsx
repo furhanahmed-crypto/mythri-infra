@@ -17,12 +17,12 @@ export function Logo({
       <Image
         src="/images/brand/mythri-infra-mark.webp"
         alt=""
-        width={160}
+        width={120}
         height={120}
         priority={!onDark}
         className={cn(
-          "h-9 w-auto transition-transform duration-500 group-hover/logo:-rotate-3 md:h-10",
-          onDark && "rounded-sm bg-white/95 p-1 shadow-sm",
+          "h-9 w-9 object-contain transition-transform duration-500 group-hover/logo:-rotate-3 md:h-10 md:w-10",
+          onDark && "rounded-sm bg-white/95 p-0.5 shadow-sm",
         )}
         aria-hidden="true"
       />

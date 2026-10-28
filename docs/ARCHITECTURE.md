@@ -96,10 +96,10 @@ Pages are Server Components (static). Client components are limited to: header/n
 
 | Component | Responsibility |
 |-----------|----------------|
-| `Header` | Logo, 6 nav links (sliding pill), theme toggle, Call Now `tel:+917993949799`, mobile `Sheet` menu |
+| `Header` | Logo, 6 nav links (sliding pill), theme toggle, Call Now `tel:+919966976799`, mobile `Sheet` menu |
 | `Providers` | `next-themes` ThemeProvider, `MotionConfig reducedMotion="user"`, TooltipProvider |
 | `Footer` | Tagline, quick links, both addresses (`<address>`), phones, email, GSTIN, © 2026 — no heading tags |
-| `WhatsAppFloat` | Mobile floating link `https://wa.me/917993949799`; fire GA4 event |
+| `WhatsAppFloat` | Mobile floating link `https://wa.me/919966976799`; fire GA4 event |
 | `EnquiryForm` | Client validation + multipart upload (BOQ ≤ 10 MB); POST API |
 | `JsonLd` | Inject page-specific schema |
 | Page sections | Map 1:1 to PDF sections (Hero, NumbersStrip, ServiceBlocks, ProjectTable, FleetGrid, etc.) |

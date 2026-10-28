@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mythri Infra">
+  <rect width="64" height="64" fill="#000"/>
+  <!-- Left navy structure -->
+  <path fill="#002858" d="M8 52 L18 52 L26 12 L16 12 Z"/>
+  <path fill="#002858" d="M16 52 L24 52 L28 28 L20 28 Z"/>
+  <!-- Steel inner faces -->
+  <path fill="#B8C0C6" d="M16.5 13 L24.5 13 L23 51 L15 51 Z"/>
+  <path fill="#9AA3A9" d="M20.5 29 L27.5 29 L25.5 51 L18.5 51 Z"/>
+  <!-- Road -->
+  <path fill="#6B7378" d="M24 52 L42 52 L36 34 L30 34 Z"/>
+  <rect x="31.5" y="36" width="3" height="3" fill="#FFF"/>
+  <rect x="31.5" y="41" width="3" height="3" fill="#FFF"/>
+  <rect x="31.5" y="46" width="3" height="3" fill="#FFF"/>
+  <!-- Right steel pillar + bars -->
+  <rect x="38" y="10" width="11" height="42" fill="#C5CDD2"/>
+  <rect x="50" y="18" width="3" height="34" fill="#8A9298"/>
+  <rect x="54" y="26" width="3" height="26" fill="#8A9298"/>
+  <rect x="58" y="34" width="3" height="18" fill="#8A9298"/>
+</svg>

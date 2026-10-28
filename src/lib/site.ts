@@ -15,8 +15,8 @@ export const siteConfig = {
     secondary: "mythriinfraa1@gmail.com",
   },
   phone: {
-    primaryDisplay: "79939 49799",
-    primaryTel: "+917993949799",
+    primaryDisplay: "99669 76799",
+    primaryTel: "+919966976799",
     secondaryDisplay: "99488 76799",
     secondaryTel: "+919948876799",
     officeDisplay: "95736 50799",
@@ -24,7 +24,7 @@ export const siteConfig = {
     partnerMuraliDisplay: "99491 79524",
     partnerMuraliTel: "+919949179524",
   },
-  whatsappUrl: "https://wa.me/917993949799",
+  whatsappUrl: "https://wa.me/919966976799",
   addresses: {
     head: {
       label: "Head Office",
